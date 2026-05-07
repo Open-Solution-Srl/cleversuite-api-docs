@@ -133,7 +133,10 @@
           },
           "Dimensione": {
             "type": "integer",
-            "description": "Dimensione in byte."
+            "description": "Dimensione in byte.",
+            "examples": [
+              245678
+            ]
           }
         }
       },
@@ -228,7 +231,10 @@
             "description": "Formato yyyy-MM-dd HH:mm:ss."
           },
           "Durata": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              3600
+            ]
           },
           "DescrizioneDettagliata": {
             "type": "string"
@@ -238,11 +244,17 @@
           },
           "Effettuato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "InCalendario": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "TipoVisualizzazione": {
             "type": "string",
@@ -259,11 +271,17 @@
               2,
               3
             ],
-            "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano."
+            "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano.",
+            "examples": [
+              2
+            ]
           },
           "OnSite": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DataCreazione": {
             "type": "string",
@@ -271,11 +289,17 @@
           },
           "CalcolaInOreLavorate": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "VisualizzaInConversazione": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DescrizioneRiferimento": {
             "type": "string"
@@ -375,7 +399,10 @@
               20,
               30
             ],
-            "description": "10 Cliente Potenziale, 20 Cliente, 30 Fornitore."
+            "description": "10 Cliente Potenziale, 20 Cliente, 30 Fornitore.",
+            "examples": [
+              30
+            ]
           },
           "Fax": {
             "type": "string"
@@ -385,11 +412,17 @@
           },
           "ConsensoPrivacy": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "ConsensoInvioMail": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "NomeBanca": {
             "type": "string"
@@ -407,7 +440,10 @@
           },
           "Premium": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "IDCondizionePagamento": {
             "type": "string",
@@ -415,15 +451,24 @@
           },
           "FornitoreNumerazioni": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "Insolvente": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "FornitoreOrdini": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "LegaleRappresentante": {
             "type": "string"
@@ -436,18 +481,27 @@
           },
           "Agenzia": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "RiferimentoAgente": {
             "type": "string"
           },
           "FornitoreStrategico": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "BloccoAmministrativo": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -482,7 +536,10 @@
             "type": "string"
           },
           "CodiceISTAT": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              58091
+            ]
           },
           "CAP": {
             "type": "string"
@@ -520,10 +577,16 @@
           },
           "FineMese": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "Giorni": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              30
+            ]
           },
           "IDERPAlternativo": {
             "type": "string"
@@ -606,7 +669,10 @@
             "format": "byte"
           },
           "Dimensione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              245678
+            ]
           },
           "Note": {
             "type": "string"
@@ -623,7 +689,10 @@
           },
           "InviatoACliente": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DataUltimoInvio": {
             "type": "string",
@@ -634,7 +703,10 @@
           },
           "Vistato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "RagioneSociale": {
             "type": "string"
@@ -684,7 +756,10 @@
           },
           "Inviato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "InoltratoA": {
             "type": "string"
@@ -736,7 +811,10 @@
           },
           "Gestito": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "Corpo": {
             "type": "string"
@@ -770,7 +848,10 @@
           },
           "Template": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -832,15 +913,24 @@
               2,
               3
             ],
-            "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano."
+            "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano.",
+            "examples": [
+              2
+            ]
           },
           "Fatturato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "InAssistenza": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "IDFattura": {
             "type": "string",
@@ -848,7 +938,10 @@
           },
           "AssistenzaSpecialistica": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           }
         }
       },
@@ -878,38 +971,62 @@
           },
           "AbilitaRapportoRisolutivo": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "SollecitoAutomatico": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "RicevutaAperturaTicket": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "InviaRapportoRisolutivo": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "Firma": {
             "type": "string"
           },
           "IncludiRiferimentoInApertura": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "RichiediOrePerChiusura": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "MostraInHelpdeskManager": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "MostraInPortaleClienti": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -979,11 +1096,17 @@
           },
           "ConsensoPrivacy": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "ConsensoInvioMail": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "NomeBanca": {
             "type": "string"
@@ -998,11 +1121,17 @@
           },
           "Confermata": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "Processata": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "DataRichiesta": {
             "type": "string",
@@ -1077,7 +1206,10 @@
           },
           "Attiva": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -1140,7 +1272,10 @@
           },
           "Attiva": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "IDRichiestaAnagrafica": {
             "type": "string",
@@ -1299,7 +1434,10 @@
           },
           "InCalendario": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "Ambito": {
             "type": "string",
@@ -1321,26 +1459,41 @@
           },
           "TastoRapido": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "OreLavorateDefault": {
             "type": "number"
           },
           "VisualizzaInConversazione": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "CalcolaInOreLavorate": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "PermettiGestitoDettaglioOrdine": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "Bloccato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "ColoreRGB": {
             "type": "string",
@@ -1426,7 +1579,10 @@
               1000,
               10000
             ],
-            "description": "3 Contatto, 100 Staff, 1000 Amministratore Sistema, 10000 Anonimo."
+            "description": "3 Contatto, 100 Staff, 1000 Amministratore Sistema, 10000 Anonimo.",
+            "examples": [
+              100
+            ]
           },
           "Telefono": {
             "type": "string"
@@ -1439,7 +1595,10 @@
           },
           "AlertAssegnazioneTicket": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "UsernamePBX": {
             "type": "string"
@@ -1461,22 +1620,34 @@
           },
           "ResocontoGiornaliero": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "Agente": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "MFA": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "SecretMFA": {
             "type": "string"
           },
           "InHelpdeskManager": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           }
         }
       },
@@ -1530,11 +1701,17 @@
           },
           "Abilitato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "CliAssociato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "UdM": {
             "type": "string",
@@ -1550,7 +1727,10 @@
           },
           "Servizio": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "RicorrenzaPredefinita": {
             "type": "string",
@@ -1565,7 +1745,10 @@
           },
           "AssistenzaCompresa": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "DescrizioneOfferta": {
             "type": "string"
@@ -1610,7 +1793,10 @@
             "description": "FK verso DettagliContratti."
           },
           "Posizione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              10
+            ]
           },
           "TipologiaArticolo": {
             "type": "string",
@@ -1684,10 +1870,16 @@
           },
           "GiàAttivo": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DurataFatturazione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              60
+            ]
           },
           "Causale": {
             "type": "string",
@@ -1781,7 +1973,10 @@
           },
           "Gestito": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -1881,11 +2076,17 @@
           },
           "SegueFattura": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DaControllare": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           }
         }
       },
@@ -1927,7 +2128,10 @@
             "type": "string"
           },
           "DurataInSecondi": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              1800
+            ]
           },
           "Data": {
             "type": "string",
@@ -1935,7 +2139,10 @@
           },
           "Fatturato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "CostoChiamata": {
             "type": "number"
@@ -2074,7 +2281,10 @@
           },
           "Disdettato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DataDisdetta": {
             "type": "string",
@@ -2137,7 +2347,10 @@
             "description": "FK verso SedeCliente."
           },
           "Posizione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              10
+            ]
           },
           "Descrizione": {
             "type": "string"
@@ -2184,7 +2397,10 @@
           },
           "Attivo": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "DataAttivazione": {
             "type": "string",
@@ -2200,21 +2416,30 @@
           },
           "Cessato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "NumeroPratica": {
             "type": "string"
           },
           "Fatturabile": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "DataAccettazione": {
             "type": "string",
             "description": "Formato yyyy-MM-dd HH:mm:ss."
           },
           "DurataFatturazione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              60
+            ]
           },
           "UltimaAttivitaCommerciale": {
             "type": "string",
@@ -2226,7 +2451,10 @@
           },
           "AttivazioneFatturata": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           }
         }
       },
@@ -2310,7 +2538,10 @@
           },
           "Rientrato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -2349,7 +2580,10 @@
             "type": "string"
           },
           "Posizione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              10
+            ]
           },
           "TipoRiga": {
             "type": "string",
@@ -2394,7 +2628,10 @@
           },
           "InFatturaElettronica": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -2489,7 +2726,10 @@
             ]
           },
           "NumeroColli": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              3
+            ]
           },
           "Peso": {
             "type": "number"
@@ -2499,7 +2739,10 @@
           },
           "Annullato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "CIG": {
             "type": "string"
@@ -2509,7 +2752,10 @@
           },
           "Fatturato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "IDFattura": {
             "type": "string",
@@ -2547,7 +2793,10 @@
             "description": "FK verso Cliente."
           },
           "IDERP": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              12345
+            ]
           },
           "Numero": {
             "type": "string"
@@ -2751,7 +3000,10 @@
             "description": "FK verso SedeCliente."
           },
           "Posizione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              10
+            ]
           },
           "TipologiaArticolo": {
             "type": "string",
@@ -2881,7 +3133,10 @@
           },
           "Gestito": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -2937,7 +3192,10 @@
           },
           "InPortabilita": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "CodiceDiMigrazione": {
             "type": "string"
@@ -3019,7 +3277,10 @@
           },
           "InPortabilita": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "CodiceDiMigrazione": {
             "type": "string"
@@ -3314,7 +3575,10 @@
           },
           "Evaso": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DataCreazione": {
             "type": "string",
@@ -3330,7 +3594,10 @@
             "type": "string"
           },
           "Riferimento": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              2026
+            ]
           },
           "DataEvasionePrevista": {
             "type": "string",
@@ -3380,7 +3647,10 @@
           },
           "Fatturato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "IDFattura": {
             "type": "string",
@@ -3518,7 +3788,10 @@
           },
           "Default": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -3571,14 +3844,20 @@
           },
           "Trasferta": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DescrizioneTrasferta": {
             "type": "string"
           },
           "SmartWorking": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           }
         }
       },
@@ -3718,7 +3997,10 @@
           },
           "Dimensione": {
             "type": "integer",
-            "description": "Dimensione in byte."
+            "description": "Dimensione in byte.",
+            "examples": [
+              245678
+            ]
           }
         }
       },
@@ -3784,11 +4066,17 @@
           },
           "Abilitato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "CliAssociato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "UdM": {
             "type": "string",
@@ -3804,7 +4092,10 @@
           },
           "Servizio": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "RicorrenzaPredefinita": {
             "type": "string",
@@ -3819,7 +4110,10 @@
           },
           "AssistenzaCompresa": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "DescrizioneOfferta": {
             "type": "string"
@@ -3865,7 +4159,10 @@
             "description": "Formato yyyy-MM-dd HH:mm:ss."
           },
           "Durata": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              3600
+            ]
           },
           "DescrizioneDettagliata": {
             "type": "string"
@@ -3875,11 +4172,17 @@
           },
           "Effettuato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "InCalendario": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "TipoVisualizzazione": {
             "type": "string",
@@ -3896,11 +4199,17 @@
               2,
               3
             ],
-            "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano."
+            "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano.",
+            "examples": [
+              2
+            ]
           },
           "OnSite": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DataCreazione": {
             "type": "string",
@@ -3908,11 +4217,17 @@
           },
           "CalcolaInOreLavorate": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "VisualizzaInConversazione": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DescrizioneRiferimento": {
             "type": "string"
@@ -3946,7 +4261,10 @@
             "description": "FK verso DettagliContratti."
           },
           "Posizione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              10
+            ]
           },
           "TipologiaArticolo": {
             "type": "string",
@@ -4020,10 +4338,16 @@
           },
           "GiàAttivo": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DurataFatturazione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              60
+            ]
           },
           "Causale": {
             "type": "string",
@@ -4104,7 +4428,10 @@
           },
           "Gestito": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -4184,11 +4511,17 @@
           },
           "SegueFattura": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DaControllare": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           }
         }
       },
@@ -4213,7 +4546,10 @@
             "type": "string"
           },
           "DurataInSecondi": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              1800
+            ]
           },
           "Data": {
             "type": "string",
@@ -4221,7 +4557,10 @@
           },
           "Fatturato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "CostoChiamata": {
             "type": "number"
@@ -4328,7 +4667,10 @@
               20,
               30
             ],
-            "description": "10 Cliente Potenziale, 20 Cliente, 30 Fornitore."
+            "description": "10 Cliente Potenziale, 20 Cliente, 30 Fornitore.",
+            "examples": [
+              30
+            ]
           },
           "Fax": {
             "type": "string"
@@ -4338,11 +4680,17 @@
           },
           "ConsensoPrivacy": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "ConsensoInvioMail": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "NomeBanca": {
             "type": "string"
@@ -4360,7 +4708,10 @@
           },
           "Premium": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "IDCondizionePagamento": {
             "type": "string",
@@ -4368,15 +4719,24 @@
           },
           "FornitoreNumerazioni": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "Insolvente": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "FornitoreOrdini": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "LegaleRappresentante": {
             "type": "string"
@@ -4389,18 +4749,27 @@
           },
           "Agenzia": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "RiferimentoAgente": {
             "type": "string"
           },
           "FornitoreStrategico": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "BloccoAmministrativo": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -4443,7 +4812,10 @@
             "type": "string"
           },
           "CodiceISTAT": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              58091
+            ]
           },
           "CAP": {
             "type": "string"
@@ -4468,10 +4840,16 @@
           },
           "FineMese": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "Giorni": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              30
+            ]
           },
           "IDERPAlternativo": {
             "type": "string"
@@ -4534,7 +4912,10 @@
           },
           "Disdettato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DataDisdetta": {
             "type": "string",
@@ -4583,7 +4964,10 @@
             "description": "FK verso SedeCliente."
           },
           "Posizione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              10
+            ]
           },
           "Descrizione": {
             "type": "string"
@@ -4630,7 +5014,10 @@
           },
           "Attivo": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "DataAttivazione": {
             "type": "string",
@@ -4646,21 +5033,30 @@
           },
           "Cessato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "NumeroPratica": {
             "type": "string"
           },
           "Fatturabile": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "DataAccettazione": {
             "type": "string",
             "description": "Formato yyyy-MM-dd HH:mm:ss."
           },
           "DurataFatturazione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              60
+            ]
           },
           "UltimaAttivitaCommerciale": {
             "type": "string",
@@ -4672,7 +5068,10 @@
           },
           "AttivazioneFatturata": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           }
         }
       },
@@ -4741,7 +5140,10 @@
           },
           "Rientrato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -4766,7 +5168,10 @@
             "type": "string"
           },
           "Posizione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              10
+            ]
           },
           "TipoRiga": {
             "type": "string",
@@ -4811,7 +5216,10 @@
           },
           "InFatturaElettronica": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -4865,7 +5273,10 @@
             "format": "byte"
           },
           "Dimensione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              245678
+            ]
           },
           "Note": {
             "type": "string"
@@ -4882,7 +5293,10 @@
           },
           "InviatoACliente": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DataUltimoInvio": {
             "type": "string",
@@ -4893,7 +5307,10 @@
           },
           "Vistato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "RagioneSociale": {
             "type": "string"
@@ -4977,7 +5394,10 @@
             ]
           },
           "NumeroColli": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              3
+            ]
           },
           "Peso": {
             "type": "number"
@@ -4987,7 +5407,10 @@
           },
           "Annullato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "CIG": {
             "type": "string"
@@ -4997,7 +5420,10 @@
           },
           "Fatturato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "IDFattura": {
             "type": "string",
@@ -5023,7 +5449,10 @@
             "description": "FK verso Cliente."
           },
           "IDERP": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              12345
+            ]
           },
           "Numero": {
             "type": "string"
@@ -5168,7 +5597,10 @@
             "description": "FK verso SedeCliente."
           },
           "Posizione": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              10
+            ]
           },
           "TipologiaArticolo": {
             "type": "string",
@@ -5285,7 +5717,10 @@
           },
           "Gestito": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -5319,7 +5754,10 @@
           },
           "Inviato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "InoltratoA": {
             "type": "string"
@@ -5358,7 +5796,10 @@
           },
           "Gestito": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "Corpo": {
             "type": "string"
@@ -5392,7 +5833,10 @@
           },
           "Template": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -5437,7 +5881,10 @@
           },
           "InPortabilita": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "CodiceDiMigrazione": {
             "type": "string"
@@ -5511,7 +5958,10 @@
           },
           "InPortabilita": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "CodiceDiMigrazione": {
             "type": "string"
@@ -5772,7 +6222,10 @@
           },
           "Default": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -5800,7 +6253,10 @@
           },
           "Evaso": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DataCreazione": {
             "type": "string",
@@ -5816,7 +6272,10 @@
             "type": "string"
           },
           "Riferimento": {
-            "type": "integer"
+            "type": "integer",
+            "examples": [
+              2026
+            ]
           },
           "DataEvasionePrevista": {
             "type": "string",
@@ -5854,7 +6313,10 @@
           },
           "Fatturato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "IDFattura": {
             "type": "string",
@@ -5927,14 +6389,20 @@
           },
           "Trasferta": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "DescrizioneTrasferta": {
             "type": "string"
           },
           "SmartWorking": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           }
         }
       },
@@ -5983,15 +6451,24 @@
               2,
               3
             ],
-            "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano."
+            "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano.",
+            "examples": [
+              2
+            ]
           },
           "Fatturato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "InAssistenza": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "IDFattura": {
             "type": "string",
@@ -5999,7 +6476,10 @@
           },
           "AssistenzaSpecialistica": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           }
         }
       },
@@ -6018,38 +6498,62 @@
           },
           "AbilitaRapportoRisolutivo": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "SollecitoAutomatico": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "RicevutaAperturaTicket": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "InviaRapportoRisolutivo": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "Firma": {
             "type": "string"
           },
           "IncludiRiferimentoInApertura": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "RichiediOrePerChiusura": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "MostraInHelpdeskManager": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "MostraInPortaleClienti": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -6107,11 +6611,17 @@
           },
           "ConsensoPrivacy": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "ConsensoInvioMail": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "NomeBanca": {
             "type": "string"
@@ -6126,11 +6636,17 @@
           },
           "Confermata": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "Processata": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "DataRichiesta": {
             "type": "string",
@@ -6269,7 +6785,10 @@
           },
           "Attiva": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           }
         }
       },
@@ -6320,7 +6839,10 @@
           },
           "Attiva": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "IDRichiestaAnagrafica": {
             "type": "string",
@@ -6466,7 +6988,10 @@
           },
           "InCalendario": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "Ambito": {
             "type": "string",
@@ -6488,26 +7013,41 @@
           },
           "TastoRapido": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "OreLavorateDefault": {
             "type": "number"
           },
           "VisualizzaInConversazione": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "CalcolaInOreLavorate": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "PermettiGestitoDettaglioOrdine": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "Bloccato": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "ColoreRGB": {
             "type": "string",
@@ -6571,7 +7111,10 @@
               1000,
               10000
             ],
-            "description": "3 Contatto, 100 Staff, 1000 Amministratore Sistema, 10000 Anonimo."
+            "description": "3 Contatto, 100 Staff, 1000 Amministratore Sistema, 10000 Anonimo.",
+            "examples": [
+              100
+            ]
           },
           "Telefono": {
             "type": "string"
@@ -6584,7 +7127,10 @@
           },
           "AlertAssegnazioneTicket": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "UsernamePBX": {
             "type": "string"
@@ -6606,22 +7152,34 @@
           },
           "ResocontoGiornaliero": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           },
           "Agente": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "MFA": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              -1
+            ]
           },
           "SecretMFA": {
             "type": "string"
           },
           "InHelpdeskManager": {
             "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "description": "Booleano: -1 vero, 0 falso.",
+            "examples": [
+              0
+            ]
           }
         }
       }
