@@ -128,45 +128,47 @@
         }
       },
       "Allegato": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "ID"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDMessaggio": {
+                "type": "string",
+                "description": "FK verso Messaggi (GUID o stringa vuota)."
+              },
+              "IDTicket": {
+                "type": "string",
+                "description": "FK verso Ticket (GUID o stringa vuota)."
+              },
+              "Nome": {
+                "type": "string"
+              },
+              "ContentBytes": {
+                "type": "string",
+                "format": "byte",
+                "description": "Base64 del contenuto."
+              },
+              "ContentType": {
+                "type": "string",
+                "description": "MIME type."
+              },
+              "Dimensione": {
+                "type": "integer",
+                "description": "Dimensione in byte."
+              }
+            }
           }
-        ],
-        "required": [
-          "ID"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDMessaggio": {
-            "type": "string",
-            "description": "FK verso Messaggi (GUID o stringa vuota)."
-          },
-          "IDTicket": {
-            "type": "string",
-            "description": "FK verso Ticket (GUID o stringa vuota)."
-          },
-          "Nome": {
-            "type": "string"
-          },
-          "ContentBytes": {
-            "type": "string",
-            "format": "byte",
-            "description": "Base64 del contenuto."
-          },
-          "ContentType": {
-            "type": "string",
-            "description": "MIME type."
-          },
-          "Dimensione": {
-            "type": "integer",
-            "description": "Dimensione in byte."
-          }
-        }
+        ]
       },
       "AllegatoSearchResponse": {
         "type": "object",
@@ -184,38 +186,40 @@
         }
       },
       "AllegatoAttivita": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDAttivita",
+              "Nome",
+              "ContentBytes",
+              "ContentType"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDAttivita": {
+                "type": "string",
+                "description": "FK verso Attivita."
+              },
+              "Nome": {
+                "type": "string"
+              },
+              "ContentBytes": {
+                "type": "string",
+                "format": "byte"
+              },
+              "ContentType": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "IDAttivita",
-          "Nome",
-          "ContentBytes",
-          "ContentType"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDAttivita": {
-            "type": "string",
-            "description": "FK verso Attivita."
-          },
-          "Nome": {
-            "type": "string"
-          },
-          "ContentBytes": {
-            "type": "string",
-            "format": "byte"
-          },
-          "ContentType": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "AllegatoAttivitaSearchResponse": {
         "type": "object",
@@ -233,103 +237,105 @@
         }
       },
       "Attivita": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "IDTipoAttivita",
-          "DataCreazione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "IDUtente": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "IDTipoAttivita": {
-            "type": "string",
-            "description": "FK verso TipoAttivita."
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Utente (cliente)."
-          },
-          "IDFornitore": {
-            "type": "string",
-            "description": "FK verso Utente (fornitore)."
-          },
-          "IDRiferimento": {
-            "type": "string",
-            "description": "ID di un'altra entità a cui si fa riferimento."
-          },
-          "IDUtenteCreato": {
-            "type": "string",
-            "description": "FK verso Utente (creatore)."
-          },
-          "DataAttivita": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "Durata": {
-            "type": "integer"
-          },
-          "DescrizioneDettagliata": {
-            "type": "string"
-          },
-          "DescrizioneBreve": {
-            "type": "string"
-          },
-          "Effettuato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "InCalendario": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "TipoVisualizzazione": {
-            "type": "string",
-            "enum": [
-              "Tutti",
-              "Solo io"
-            ]
-          },
-          "DirittoChiamata": {
-            "type": "integer",
-            "enum": [
-              0,
-              1,
-              2,
-              3
+          {
+            "type": "object",
+            "required": [
+              "IDTipoAttivita",
+              "DataCreazione"
             ],
-            "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano."
-          },
-          "OnSite": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DataCreazione": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "CalcolaInOreLavorate": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "VisualizzaInConversazione": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DescrizioneRiferimento": {
-            "type": "string"
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDUtente": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "IDTipoAttivita": {
+                "type": "string",
+                "description": "FK verso TipoAttivita."
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Utente (cliente)."
+              },
+              "IDFornitore": {
+                "type": "string",
+                "description": "FK verso Utente (fornitore)."
+              },
+              "IDRiferimento": {
+                "type": "string",
+                "description": "ID di un'altra entità a cui si fa riferimento."
+              },
+              "IDUtenteCreato": {
+                "type": "string",
+                "description": "FK verso Utente (creatore)."
+              },
+              "DataAttivita": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "Durata": {
+                "type": "integer"
+              },
+              "DescrizioneDettagliata": {
+                "type": "string"
+              },
+              "DescrizioneBreve": {
+                "type": "string"
+              },
+              "Effettuato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "InCalendario": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "TipoVisualizzazione": {
+                "type": "string",
+                "enum": [
+                  "Tutti",
+                  "Solo io"
+                ]
+              },
+              "DirittoChiamata": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano."
+              },
+              "OnSite": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DataCreazione": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "CalcolaInOreLavorate": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "VisualizzaInConversazione": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DescrizioneRiferimento": {
+                "type": "string"
+              }
+            }
           }
-        }
+        ]
       },
       "AttivitaSearchResponse": {
         "type": "object",
@@ -347,24 +353,26 @@
         }
       },
       "CategoriaTicket": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "Categoria"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "Categoria": {
-            "type": "string"
+          {
+            "type": "object",
+            "required": [
+              "Categoria"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Categoria": {
+                "type": "string"
+              }
+            }
           }
-        }
+        ]
       },
       "CategoriaTicketSearchResponse": {
         "type": "object",
@@ -382,141 +390,143 @@
         }
       },
       "Cliente": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "RagioneSociale"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "IDErpPrincipale": {
-            "type": "string"
-          },
-          "RagioneSociale": {
-            "type": "string"
-          },
-          "PartitaIVA": {
-            "type": "string"
-          },
-          "Telefono": {
-            "type": "string"
-          },
-          "CodiceFiscale": {
-            "type": "string"
-          },
-          "Indirizzo": {
-            "type": "string"
-          },
-          "Note": {
-            "type": "string"
-          },
-          "Email": {
-            "type": "string"
-          },
-          "PEC": {
-            "type": "string"
-          },
-          "CodiceSDI": {
-            "type": "string"
-          },
-          "Citta": {
-            "type": "string"
-          },
-          "Provincia": {
-            "type": "string"
-          },
-          "CAP": {
-            "type": "string"
-          },
-          "Tipo": {
-            "type": "integer",
-            "enum": [
-              10,
-              20,
-              30
+          {
+            "type": "object",
+            "required": [
+              "RagioneSociale"
             ],
-            "description": "10 Cliente Potenziale, 20 Cliente, 30 Fornitore."
-          },
-          "Fax": {
-            "type": "string"
-          },
-          "IBAN": {
-            "type": "string"
-          },
-          "ConsensoPrivacy": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "ConsensoInvioMail": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "NomeBanca": {
-            "type": "string"
-          },
-          "Provenienza": {
-            "type": "string"
-          },
-          "TipoContribuente": {
-            "type": "string",
-            "enum": [
-              "Persona Giuridica",
-              "Persona Fisica",
-              "Pubblica Amministrazione"
-            ]
-          },
-          "Premium": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "IDCondizionePagamento": {
-            "type": "string",
-            "description": "FK verso CondizionePagamento."
-          },
-          "FornitoreNumerazioni": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "Insolvente": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "FornitoreOrdini": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "LegaleRappresentante": {
-            "type": "string"
-          },
-          "CodFiscLegaleRappresentante": {
-            "type": "string"
-          },
-          "IDErpAlternativo": {
-            "type": "string"
-          },
-          "Agenzia": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "RiferimentoAgente": {
-            "type": "string"
-          },
-          "FornitoreStrategico": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "BloccoAmministrativo": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDErpPrincipale": {
+                "type": "string"
+              },
+              "RagioneSociale": {
+                "type": "string"
+              },
+              "PartitaIVA": {
+                "type": "string"
+              },
+              "Telefono": {
+                "type": "string"
+              },
+              "CodiceFiscale": {
+                "type": "string"
+              },
+              "Indirizzo": {
+                "type": "string"
+              },
+              "Note": {
+                "type": "string"
+              },
+              "Email": {
+                "type": "string"
+              },
+              "PEC": {
+                "type": "string"
+              },
+              "CodiceSDI": {
+                "type": "string"
+              },
+              "Citta": {
+                "type": "string"
+              },
+              "Provincia": {
+                "type": "string"
+              },
+              "CAP": {
+                "type": "string"
+              },
+              "Tipo": {
+                "type": "integer",
+                "enum": [
+                  10,
+                  20,
+                  30
+                ],
+                "description": "10 Cliente Potenziale, 20 Cliente, 30 Fornitore."
+              },
+              "Fax": {
+                "type": "string"
+              },
+              "IBAN": {
+                "type": "string"
+              },
+              "ConsensoPrivacy": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "ConsensoInvioMail": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "NomeBanca": {
+                "type": "string"
+              },
+              "Provenienza": {
+                "type": "string"
+              },
+              "TipoContribuente": {
+                "type": "string",
+                "enum": [
+                  "Persona Giuridica",
+                  "Persona Fisica",
+                  "Pubblica Amministrazione"
+                ]
+              },
+              "Premium": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "IDCondizionePagamento": {
+                "type": "string",
+                "description": "FK verso CondizionePagamento."
+              },
+              "FornitoreNumerazioni": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "Insolvente": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "FornitoreOrdini": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "LegaleRappresentante": {
+                "type": "string"
+              },
+              "CodFiscLegaleRappresentante": {
+                "type": "string"
+              },
+              "IDErpAlternativo": {
+                "type": "string"
+              },
+              "Agenzia": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "RiferimentoAgente": {
+                "type": "string"
+              },
+              "FornitoreStrategico": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "BloccoAmministrativo": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        }
+        ]
       },
       "ClienteSearchResponse": {
         "type": "object",
@@ -534,36 +544,38 @@
         }
       },
       "Comune": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "ID"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Nome": {
+                "type": "string"
+              },
+              "Provincia": {
+                "type": "string"
+              },
+              "Regione": {
+                "type": "string"
+              },
+              "CodiceISTAT": {
+                "type": "integer"
+              },
+              "CAP": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "ID"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "Nome": {
-            "type": "string"
-          },
-          "Provincia": {
-            "type": "string"
-          },
-          "Regione": {
-            "type": "string"
-          },
-          "CodiceISTAT": {
-            "type": "integer"
-          },
-          "CAP": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "ComuneSearchResponse": {
         "type": "object",
@@ -581,53 +593,55 @@
         }
       },
       "CondizionePagamento": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDERPPrincipale",
+              "Descrizione",
+              "Giorni"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "IDERPPrincipale": {
+                "type": "string"
+              },
+              "FineMese": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "Giorni": {
+                "type": "integer"
+              },
+              "IDERPAlternativo": {
+                "type": "string"
+              },
+              "MetodoDiPagamento": {
+                "type": "string",
+                "enum": [
+                  "Contanti",
+                  "Assegno",
+                  "Bonifico",
+                  "RIBA",
+                  "SEPA Core",
+                  "SEPA B2B"
+                ]
+              },
+              "CostoIncasso": {
+                "type": "number"
+              }
+            }
           }
-        ],
-        "required": [
-          "IDERPPrincipale",
-          "Descrizione",
-          "Giorni"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "IDERPPrincipale": {
-            "type": "string"
-          },
-          "FineMese": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "Giorni": {
-            "type": "integer"
-          },
-          "IDERPAlternativo": {
-            "type": "string"
-          },
-          "MetodoDiPagamento": {
-            "type": "string",
-            "enum": [
-              "Contanti",
-              "Assegno",
-              "Bonifico",
-              "RIBA",
-              "SEPA Core",
-              "SEPA B2B"
-            ]
-          },
-          "CostoIncasso": {
-            "type": "number"
-          }
-        }
+        ]
       },
       "CondizionePagamentoSearchResponse": {
         "type": "object",
@@ -645,95 +659,97 @@
         }
       },
       "Documento": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "DataCaricamento",
+              "Descrizione"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDUtenteStaff": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "IDTipologiaDocumento": {
+                "type": "string",
+                "description": "FK verso TipologiaDocumento."
+              },
+              "IDRiferimento": {
+                "type": "string"
+              },
+              "DescrizioneRiferimento": {
+                "type": "string"
+              },
+              "DataDocumento": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "DataCaricamento": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "NomeFile": {
+                "type": "string"
+              },
+              "ContentType": {
+                "type": "string"
+              },
+              "ContentBytes": {
+                "type": "string",
+                "format": "byte"
+              },
+              "Dimensione": {
+                "type": "integer"
+              },
+              "Note": {
+                "type": "string"
+              },
+              "Firma": {
+                "type": "string"
+              },
+              "Firmatario": {
+                "type": "string"
+              },
+              "DataFirma": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "InviatoACliente": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DataUltimoInvio": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "InviatoA": {
+                "type": "string"
+              },
+              "Vistato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "RagioneSociale": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "DataCaricamento",
-          "Descrizione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDUtenteStaff": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "IDTipologiaDocumento": {
-            "type": "string",
-            "description": "FK verso TipologiaDocumento."
-          },
-          "IDRiferimento": {
-            "type": "string"
-          },
-          "DescrizioneRiferimento": {
-            "type": "string"
-          },
-          "DataDocumento": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "DataCaricamento": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "NomeFile": {
-            "type": "string"
-          },
-          "ContentType": {
-            "type": "string"
-          },
-          "ContentBytes": {
-            "type": "string",
-            "format": "byte"
-          },
-          "Dimensione": {
-            "type": "integer"
-          },
-          "Note": {
-            "type": "string"
-          },
-          "Firma": {
-            "type": "string"
-          },
-          "Firmatario": {
-            "type": "string"
-          },
-          "DataFirma": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "InviatoACliente": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DataUltimoInvio": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "InviatoA": {
-            "type": "string"
-          },
-          "Vistato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "RagioneSociale": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "DocumentoSearchResponse": {
         "type": "object",
@@ -751,54 +767,56 @@
         }
       },
       "Messaggio": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDUtente",
+              "DataMessaggio",
+              "Oggetto"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDUtente": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "IDRiferimento": {
+                "type": "string"
+              },
+              "Corpo": {
+                "type": "string",
+                "description": "Corpo del messaggio (può contenere HTML)."
+              },
+              "DataMessaggio": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "Oggetto": {
+                "type": "string"
+              },
+              "Inviato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "InoltratoA": {
+                "type": "string"
+              },
+              "Tipo": {
+                "type": "string"
+              },
+              "CC": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "IDUtente",
-          "DataMessaggio",
-          "Oggetto"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDUtente": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "IDRiferimento": {
-            "type": "string"
-          },
-          "Corpo": {
-            "type": "string",
-            "description": "Corpo del messaggio (può contenere HTML)."
-          },
-          "DataMessaggio": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "Oggetto": {
-            "type": "string"
-          },
-          "Inviato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "InoltratoA": {
-            "type": "string"
-          },
-          "Tipo": {
-            "type": "string"
-          },
-          "CC": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "MessaggiSearchResponse": {
         "type": "object",
@@ -816,75 +834,77 @@
         }
       },
       "MessaggioWhatsapp": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDNumerazione",
+              "NumeroContatto",
+              "DataMessaggio"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "description": "Identificativo WhatsApp del messaggio (formato wamid.*)."
+              },
+              "IDUtenteStaff": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "IDNumerazione": {
+                "type": "string"
+              },
+              "NumeroContatto": {
+                "type": "string"
+              },
+              "DataMessaggio": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "Gestito": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "Corpo": {
+                "type": "string"
+              },
+              "Allegato": {
+                "type": "string",
+                "format": "byte",
+                "description": "Base64 dell'allegato."
+              },
+              "Inoltrato": {
+                "type": "string"
+              },
+              "MimeTypeAllegato": {
+                "type": "string"
+              },
+              "NomeAllegato": {
+                "type": "string"
+              },
+              "IDGestitoDa": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "IDRiferimento": {
+                "type": "string"
+              },
+              "DescrizioneRiferimento": {
+                "type": "string"
+              },
+              "NicknameContatto": {
+                "type": "string"
+              },
+              "Template": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDNumerazione",
-          "NumeroContatto",
-          "DataMessaggio"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "description": "Identificativo WhatsApp del messaggio (formato wamid.*)."
-          },
-          "IDUtenteStaff": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "IDNumerazione": {
-            "type": "string"
-          },
-          "NumeroContatto": {
-            "type": "string"
-          },
-          "DataMessaggio": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "Gestito": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "Corpo": {
-            "type": "string"
-          },
-          "Allegato": {
-            "type": "string",
-            "format": "byte",
-            "description": "Base64 dell'allegato."
-          },
-          "Inoltrato": {
-            "type": "string"
-          },
-          "MimeTypeAllegato": {
-            "type": "string"
-          },
-          "NomeAllegato": {
-            "type": "string"
-          },
-          "IDGestitoDa": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "IDRiferimento": {
-            "type": "string"
-          },
-          "DescrizioneRiferimento": {
-            "type": "string"
-          },
-          "NicknameContatto": {
-            "type": "string"
-          },
-          "Template": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          }
-        }
+        ]
       },
       "MessaggioWhatsappSearchResponse": {
         "type": "object",
@@ -902,76 +922,78 @@
         }
       },
       "RapportoRisolutivo": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "IDSottocategoriaTicket",
-          "Titolo",
-          "NoteCliente"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "IDTicket": {
-            "type": "string",
-            "description": "FK verso Ticket."
-          },
-          "IDSottocategoriaTicket": {
-            "type": "string",
-            "description": "FK verso SottocategoriaTicket."
-          },
-          "Titolo": {
-            "type": "string"
-          },
-          "NoteCliente": {
-            "type": "string"
-          },
-          "IDUtente": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "NoteTecniche": {
-            "type": "string"
-          },
-          "OreLavorateOnSite": {
-            "type": "number"
-          },
-          "OreLavorateDaRemoto": {
-            "type": "number"
-          },
-          "DirittoDiChiamata": {
-            "type": "integer",
-            "enum": [
-              0,
-              1,
-              2,
-              3
+          {
+            "type": "object",
+            "required": [
+              "IDSottocategoriaTicket",
+              "Titolo",
+              "NoteCliente"
             ],
-            "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano."
-          },
-          "Fatturato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "InAssistenza": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "IDFattura": {
-            "type": "string",
-            "description": "FK verso Fatture."
-          },
-          "AssistenzaSpecialistica": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDTicket": {
+                "type": "string",
+                "description": "FK verso Ticket."
+              },
+              "IDSottocategoriaTicket": {
+                "type": "string",
+                "description": "FK verso SottocategoriaTicket."
+              },
+              "Titolo": {
+                "type": "string"
+              },
+              "NoteCliente": {
+                "type": "string"
+              },
+              "IDUtente": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "NoteTecniche": {
+                "type": "string"
+              },
+              "OreLavorateOnSite": {
+                "type": "number"
+              },
+              "OreLavorateDaRemoto": {
+                "type": "number"
+              },
+              "DirittoDiChiamata": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "description": "0 No, 1 Remoto, 2 Urbano, 3 Extraurbano."
+              },
+              "Fatturato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "InAssistenza": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "IDFattura": {
+                "type": "string",
+                "description": "FK verso Fatture."
+              },
+              "AssistenzaSpecialistica": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        }
+        ]
       },
       "RapportoRisolutivoSearchResponse": {
         "type": "object",
@@ -989,59 +1011,61 @@
         }
       },
       "Reparto": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "Reparto"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Reparto": {
+                "type": "string"
+              },
+              "AbilitaRapportoRisolutivo": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "SollecitoAutomatico": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "RicevutaAperturaTicket": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "InviaRapportoRisolutivo": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "Firma": {
+                "type": "string"
+              },
+              "IncludiRiferimentoInApertura": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "RichiediOrePerChiusura": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "MostraInHelpdeskManager": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "MostraInPortaleClienti": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        ],
-        "required": [
-          "Reparto"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "Reparto": {
-            "type": "string"
-          },
-          "AbilitaRapportoRisolutivo": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "SollecitoAutomatico": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "RicevutaAperturaTicket": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "InviaRapportoRisolutivo": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "Firma": {
-            "type": "string"
-          },
-          "IncludiRiferimentoInApertura": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "RichiediOrePerChiusura": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "MostraInHelpdeskManager": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "MostraInPortaleClienti": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          }
-        }
+        ]
       },
       "RepartoSearchResponse": {
         "type": "object",
@@ -1059,107 +1083,109 @@
         }
       },
       "RichiestaAnagrafica": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "RagioneSociale",
+              "TipoAnagrafica"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "RagioneSociale": {
+                "type": "string"
+              },
+              "PartitaIVA": {
+                "type": "string"
+              },
+              "CodiceFiscale": {
+                "type": "string"
+              },
+              "TelefonoPrincipale": {
+                "type": "string"
+              },
+              "Indirizzo": {
+                "type": "string"
+              },
+              "Citta": {
+                "type": "string"
+              },
+              "CAP": {
+                "type": "string"
+              },
+              "Provincia": {
+                "type": "string"
+              },
+              "Email": {
+                "type": "string"
+              },
+              "PEC": {
+                "type": "string"
+              },
+              "CodiceSDI": {
+                "type": "string"
+              },
+              "Tipo": {
+                "type": "string"
+              },
+              "Fax": {
+                "type": "string"
+              },
+              "IBAN": {
+                "type": "string"
+              },
+              "ConsensoPrivacy": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "ConsensoInvioMail": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "NomeBanca": {
+                "type": "string"
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "IDComuneSedeLegale": {
+                "type": "string",
+                "description": "FK verso Comune."
+              },
+              "Confermata": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "Processata": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DataRichiesta": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "TipoAnagrafica": {
+                "type": "string",
+                "enum": [
+                  "Persona Fisica",
+                  "Persona Giuridica",
+                  "Pubblica Amministrazione"
+                ]
+              },
+              "IDCondizionePagamento": {
+                "type": "string",
+                "description": "FK verso CondizionePagamento."
+              }
+            }
           }
-        ],
-        "required": [
-          "RagioneSociale",
-          "TipoAnagrafica"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "RagioneSociale": {
-            "type": "string"
-          },
-          "PartitaIVA": {
-            "type": "string"
-          },
-          "CodiceFiscale": {
-            "type": "string"
-          },
-          "TelefonoPrincipale": {
-            "type": "string"
-          },
-          "Indirizzo": {
-            "type": "string"
-          },
-          "Citta": {
-            "type": "string"
-          },
-          "CAP": {
-            "type": "string"
-          },
-          "Provincia": {
-            "type": "string"
-          },
-          "Email": {
-            "type": "string"
-          },
-          "PEC": {
-            "type": "string"
-          },
-          "CodiceSDI": {
-            "type": "string"
-          },
-          "Tipo": {
-            "type": "string"
-          },
-          "Fax": {
-            "type": "string"
-          },
-          "IBAN": {
-            "type": "string"
-          },
-          "ConsensoPrivacy": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "ConsensoInvioMail": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "NomeBanca": {
-            "type": "string"
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "IDComuneSedeLegale": {
-            "type": "string",
-            "description": "FK verso Comune."
-          },
-          "Confermata": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "Processata": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DataRichiesta": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "TipoAnagrafica": {
-            "type": "string",
-            "enum": [
-              "Persona Fisica",
-              "Persona Giuridica",
-              "Pubblica Amministrazione"
-            ]
-          },
-          "IDCondizionePagamento": {
-            "type": "string",
-            "description": "FK verso CondizionePagamento."
-          }
-        }
+        ]
       },
       "RichiestaAnagraficaSearchResponse": {
         "type": "object",
@@ -1177,57 +1203,59 @@
         }
       },
       "SedeCliente": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDCliente",
+              "Codice"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "RagioneSociale": {
+                "type": "string"
+              },
+              "Telefono": {
+                "type": "string"
+              },
+              "Indirizzo": {
+                "type": "string"
+              },
+              "Citta": {
+                "type": "string"
+              },
+              "CAP": {
+                "type": "string"
+              },
+              "Provincia": {
+                "type": "string"
+              },
+              "Note": {
+                "type": "string"
+              },
+              "Email": {
+                "type": "string"
+              },
+              "Codice": {
+                "type": "string"
+              },
+              "Attiva": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDCliente",
-          "Codice"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "RagioneSociale": {
-            "type": "string"
-          },
-          "Telefono": {
-            "type": "string"
-          },
-          "Indirizzo": {
-            "type": "string"
-          },
-          "Citta": {
-            "type": "string"
-          },
-          "CAP": {
-            "type": "string"
-          },
-          "Provincia": {
-            "type": "string"
-          },
-          "Note": {
-            "type": "string"
-          },
-          "Email": {
-            "type": "string"
-          },
-          "Codice": {
-            "type": "string"
-          },
-          "Attiva": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          }
-        }
+        ]
       },
       "SedeClienteSearchResponse": {
         "type": "object",
@@ -1245,65 +1273,67 @@
         }
       },
       "SedeRichiestaAnagrafica": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDRichiestaAnagrafica",
+              "Codice"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "RagioneSociale": {
+                "type": "string"
+              },
+              "Telefono": {
+                "type": "string"
+              },
+              "Indirizzo": {
+                "type": "string"
+              },
+              "Citta": {
+                "type": "string"
+              },
+              "CAP": {
+                "type": "string"
+              },
+              "Provincia": {
+                "type": "string"
+              },
+              "IDComune": {
+                "type": "string",
+                "description": "FK verso Comune."
+              },
+              "Note": {
+                "type": "string"
+              },
+              "Email": {
+                "type": "string"
+              },
+              "Codice": {
+                "type": "string"
+              },
+              "Attiva": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "IDRichiestaAnagrafica": {
+                "type": "string",
+                "description": "FK verso RichiestaAnagrafica."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDRichiestaAnagrafica",
-          "Codice"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "RagioneSociale": {
-            "type": "string"
-          },
-          "Telefono": {
-            "type": "string"
-          },
-          "Indirizzo": {
-            "type": "string"
-          },
-          "Citta": {
-            "type": "string"
-          },
-          "CAP": {
-            "type": "string"
-          },
-          "Provincia": {
-            "type": "string"
-          },
-          "IDComune": {
-            "type": "string",
-            "description": "FK verso Comune."
-          },
-          "Note": {
-            "type": "string"
-          },
-          "Email": {
-            "type": "string"
-          },
-          "Codice": {
-            "type": "string"
-          },
-          "Attiva": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "IDRichiestaAnagrafica": {
-            "type": "string",
-            "description": "FK verso RichiestaAnagrafica."
-          }
-        }
+        ]
       },
       "SedeRichiestaAnagraficaSearchResponse": {
         "type": "object",
@@ -1322,29 +1352,31 @@
         }
       },
       "SottocategoriaTicket": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "IDCategoriaTicket",
-          "Sottocategoria"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "IDCategoriaTicket": {
-            "type": "string",
-            "description": "FK verso CategoriaTicket."
-          },
-          "Sottocategoria": {
-            "type": "string"
+          {
+            "type": "object",
+            "required": [
+              "IDCategoriaTicket",
+              "Sottocategoria"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDCategoriaTicket": {
+                "type": "string",
+                "description": "FK verso CategoriaTicket."
+              },
+              "Sottocategoria": {
+                "type": "string"
+              }
+            }
           }
-        }
+        ]
       },
       "SottocategoriaTicketSearchResponse": {
         "type": "object",
@@ -1362,88 +1394,90 @@
         }
       },
       "Ticket": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDReparto",
+              "Oggetto",
+              "DataApertura",
+              "RiferimentoTicket",
+              "DataUltimaModifica"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "IDReparto": {
+                "type": "string",
+                "description": "FK verso Reparto."
+              },
+              "IDUtenteCliente": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "IDUtenteStaff": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "IDUtenteUltimaModifica": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "Oggetto": {
+                "type": "string"
+              },
+              "DataApertura": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "DataChiusura": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "RiferimentoTicket": {
+                "type": "string",
+                "description": "Codice univoco del ticket."
+              },
+              "DataUltimaModifica": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "Note": {
+                "type": "string"
+              },
+              "StatoTicket": {
+                "type": "string",
+                "enum": [
+                  "Aperto",
+                  "In Lavorazione",
+                  "Chiuso",
+                  "Sospeso"
+                ]
+              },
+              "Priorita": {
+                "type": "string",
+                "enum": [
+                  "Bassa",
+                  "Media",
+                  "Alta"
+                ]
+              },
+              "IDCategoria": {
+                "type": "string",
+                "description": "FK verso SottocategoriaTicket."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDReparto",
-          "Oggetto",
-          "DataApertura",
-          "RiferimentoTicket",
-          "DataUltimaModifica"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "IDReparto": {
-            "type": "string",
-            "description": "FK verso Reparto."
-          },
-          "IDUtenteCliente": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "IDUtenteStaff": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "IDUtenteUltimaModifica": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "Oggetto": {
-            "type": "string"
-          },
-          "DataApertura": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "DataChiusura": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "RiferimentoTicket": {
-            "type": "string",
-            "description": "Codice univoco del ticket."
-          },
-          "DataUltimaModifica": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "Note": {
-            "type": "string"
-          },
-          "StatoTicket": {
-            "type": "string",
-            "enum": [
-              "Aperto",
-              "In Lavorazione",
-              "Chiuso",
-              "Sospeso"
-            ]
-          },
-          "Priorita": {
-            "type": "string",
-            "enum": [
-              "Bassa",
-              "Media",
-              "Alta"
-            ]
-          },
-          "IDCategoria": {
-            "type": "string",
-            "description": "FK verso SottocategoriaTicket."
-          }
-        }
+        ]
       },
       "TicketSearchResponse": {
         "type": "object",
@@ -1461,76 +1495,78 @@
         }
       },
       "TipoAttivita": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "Descrizione"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "Colore": {
+                "type": "string"
+              },
+              "InCalendario": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "Ambito": {
+                "type": "string",
+                "enum": [
+                  "Ticket",
+                  "Canoni",
+                  "Merci",
+                  "Commerciale",
+                  "Presenze",
+                  "Veicoli",
+                  "Ordini"
+                ]
+              },
+              "TestoAvvisoEmail": {
+                "type": "string"
+              },
+              "AvanzaOpportunitaA": {
+                "type": "string"
+              },
+              "TastoRapido": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "OreLavorateDefault": {
+                "type": "number"
+              },
+              "VisualizzaInConversazione": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "CalcolaInOreLavorate": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "PermettiGestitoDettaglioOrdine": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "Bloccato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "ColoreRGB": {
+                "type": "string",
+                "description": "Formato 'R, G, B'."
+              }
+            }
           }
-        ],
-        "required": [
-          "Descrizione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "Colore": {
-            "type": "string"
-          },
-          "InCalendario": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "Ambito": {
-            "type": "string",
-            "enum": [
-              "Ticket",
-              "Canoni",
-              "Merci",
-              "Commerciale",
-              "Presenze",
-              "Veicoli",
-              "Ordini"
-            ]
-          },
-          "TestoAvvisoEmail": {
-            "type": "string"
-          },
-          "AvanzaOpportunitaA": {
-            "type": "string"
-          },
-          "TastoRapido": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "OreLavorateDefault": {
-            "type": "number"
-          },
-          "VisualizzaInConversazione": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "CalcolaInOreLavorate": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "PermettiGestitoDettaglioOrdine": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "Bloccato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "ColoreRGB": {
-            "type": "string",
-            "description": "Formato 'R, G, B'."
-          }
-        }
+        ]
       },
       "TipoAttivitaSearchResponse": {
         "type": "object",
@@ -1548,24 +1584,26 @@
         }
       },
       "TipologiaDocumento": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "Tipo"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "Tipo": {
-            "type": "string"
+          {
+            "type": "object",
+            "required": [
+              "Tipo"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Tipo": {
+                "type": "string"
+              }
+            }
           }
-        }
+        ]
       },
       "TipologiaDocumentoSearchResponse": {
         "type": "object",
@@ -1583,104 +1621,106 @@
         }
       },
       "Utente": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "Email"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "IDProfilo": {
-            "type": "string"
-          },
-          "Email": {
-            "type": "string"
-          },
-          "Password": {
-            "type": "string"
-          },
-          "Nome": {
-            "type": "string"
-          },
-          "Cognome": {
-            "type": "string"
-          },
-          "Validita": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "Ruolo": {
-            "type": "integer",
-            "enum": [
-              3,
-              100,
-              1000,
-              10000
+          {
+            "type": "object",
+            "required": [
+              "Email"
             ],
-            "description": "3 Contatto, 100 Staff, 1000 Amministratore Sistema, 10000 Anonimo."
-          },
-          "Telefono": {
-            "type": "string"
-          },
-          "Cellulare": {
-            "type": "string"
-          },
-          "InformazioniAggiuntive": {
-            "type": "string"
-          },
-          "AlertAssegnazioneTicket": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "UsernamePBX": {
-            "type": "string"
-          },
-          "PasswordPBX": {
-            "type": "string"
-          },
-          "UsernameERP": {
-            "type": "string"
-          },
-          "PasswordERP": {
-            "type": "string"
-          },
-          "UltimaVersioneVisualizzata": {
-            "type": "string"
-          },
-          "AvvisoGiornaliero": {
-            "type": "string"
-          },
-          "ResocontoGiornaliero": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "Agente": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "MFA": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "SecretMFA": {
-            "type": "string"
-          },
-          "InHelpdeskManager": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "IDProfilo": {
+                "type": "string"
+              },
+              "Email": {
+                "type": "string"
+              },
+              "Password": {
+                "type": "string"
+              },
+              "Nome": {
+                "type": "string"
+              },
+              "Cognome": {
+                "type": "string"
+              },
+              "Validita": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "Ruolo": {
+                "type": "integer",
+                "enum": [
+                  3,
+                  100,
+                  1000,
+                  10000
+                ],
+                "description": "3 Contatto, 100 Staff, 1000 Amministratore Sistema, 10000 Anonimo."
+              },
+              "Telefono": {
+                "type": "string"
+              },
+              "Cellulare": {
+                "type": "string"
+              },
+              "InformazioniAggiuntive": {
+                "type": "string"
+              },
+              "AlertAssegnazioneTicket": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "UsernamePBX": {
+                "type": "string"
+              },
+              "PasswordPBX": {
+                "type": "string"
+              },
+              "UsernameERP": {
+                "type": "string"
+              },
+              "PasswordERP": {
+                "type": "string"
+              },
+              "UltimaVersioneVisualizzata": {
+                "type": "string"
+              },
+              "AvvisoGiornaliero": {
+                "type": "string"
+              },
+              "ResocontoGiornaliero": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "Agente": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "MFA": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "SecretMFA": {
+                "type": "string"
+              },
+              "InHelpdeskManager": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        }
+        ]
       },
       "UtenteSearchResponse": {
         "type": "object",
@@ -1698,90 +1738,92 @@
         }
       },
       "Articolo": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "Codice",
+              "Tipo",
+              "Prezzo",
+              "DescrizioneBreve"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Tipo": {
+                "type": "string",
+                "description": "Es. 'Merce', 'Canone'."
+              },
+              "Codice": {
+                "type": "string"
+              },
+              "DescrizioneBreve": {
+                "type": "string"
+              },
+              "Prezzo": {
+                "type": "number"
+              },
+              "PrezzoAttivazione": {
+                "type": "number"
+              },
+              "IDCategoriaMerceologica": {
+                "type": "string",
+                "description": "FK verso CategoriaMerceologica."
+              },
+              "IDCategoriaOmogenea": {
+                "type": "string",
+                "description": "FK verso CategoriaOmogenea."
+              },
+              "Abilitato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "CliAssociato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "UdM": {
+                "type": "string",
+                "enum": [
+                  "NR",
+                  "H",
+                  "PZ"
+                ]
+              },
+              "IDMarcaArticolo": {
+                "type": "string",
+                "description": "FK verso MarcaArticolo."
+              },
+              "Servizio": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "RicorrenzaPredefinita": {
+                "type": "string",
+                "enum": [
+                  "Mensile",
+                  "Bimestrale",
+                  "Trimestrale",
+                  "Quadrimestrale",
+                  "Semestrale",
+                  "Annuale"
+                ]
+              },
+              "AssistenzaCompresa": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DescrizioneOfferta": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "Codice",
-          "Tipo",
-          "Prezzo",
-          "DescrizioneBreve"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "Tipo": {
-            "type": "string",
-            "description": "Es. 'Merce', 'Canone'."
-          },
-          "Codice": {
-            "type": "string"
-          },
-          "DescrizioneBreve": {
-            "type": "string"
-          },
-          "Prezzo": {
-            "type": "number"
-          },
-          "PrezzoAttivazione": {
-            "type": "number"
-          },
-          "IDCategoriaMerceologica": {
-            "type": "string",
-            "description": "FK verso CategoriaMerceologica."
-          },
-          "IDCategoriaOmogenea": {
-            "type": "string",
-            "description": "FK verso CategoriaOmogenea."
-          },
-          "Abilitato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "CliAssociato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "UdM": {
-            "type": "string",
-            "enum": [
-              "NR",
-              "H",
-              "PZ"
-            ]
-          },
-          "IDMarcaArticolo": {
-            "type": "string",
-            "description": "FK verso MarcaArticolo."
-          },
-          "Servizio": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "RicorrenzaPredefinita": {
-            "type": "string",
-            "enum": [
-              "Mensile",
-              "Bimestrale",
-              "Trimestrale",
-              "Quadrimestrale",
-              "Semestrale",
-              "Annuale"
-            ]
-          },
-          "AssistenzaCompresa": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DescrizioneOfferta": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "ArticoloSearchResponse": {
         "type": "object",
@@ -1799,141 +1841,143 @@
         }
       },
       "CanoneOfferta": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDOfferta"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDOfferta": {
+                "type": "string",
+                "description": "FK verso Offerta."
+              },
+              "IDArticolo": {
+                "type": "string",
+                "description": "FK verso Articolo."
+              },
+              "IDSedeCliente": {
+                "type": "string",
+                "description": "FK verso SedeCliente."
+              },
+              "IDDettaglioContratto": {
+                "type": "string",
+                "description": "FK verso DettagliContratti."
+              },
+              "Posizione": {
+                "type": "integer"
+              },
+              "TipologiaArticolo": {
+                "type": "string",
+                "description": "Sempre 'Canone'."
+              },
+              "CodiceProdotto": {
+                "type": "string"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "Note": {
+                "type": "string"
+              },
+              "UnitaDiMisura": {
+                "type": "string",
+                "enum": [
+                  "NR",
+                  "H",
+                  "PZ"
+                ]
+              },
+              "Quantita": {
+                "type": "number"
+              },
+              "Prezzo": {
+                "type": "number"
+              },
+              "CostoDiAttivazione": {
+                "type": "number"
+              },
+              "DescrizioneDettagliata": {
+                "type": "string"
+              },
+              "PercorsoImmagine": {
+                "type": "string"
+              },
+              "Sconto": {
+                "type": "number"
+              },
+              "ScontoAttivazione": {
+                "type": "number"
+              },
+              "StatoServizio": {
+                "type": "string"
+              },
+              "TipoSconto": {
+                "type": "string",
+                "enum": [
+                  "Percentuale",
+                  "Prezzo"
+                ]
+              },
+              "TipoScontoAttivazione": {
+                "type": "string",
+                "enum": [
+                  "Percentuale",
+                  "Prezzo"
+                ]
+              },
+              "RicorrenzaPagamento": {
+                "type": "string",
+                "enum": [
+                  "Mensile",
+                  "Bimestrale",
+                  "Trimestrale",
+                  "Quadrimestrale",
+                  "Semestrale",
+                  "Annuale"
+                ]
+              },
+              "GiàAttivo": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DurataFatturazione": {
+                "type": "integer"
+              },
+              "Causale": {
+                "type": "string",
+                "enum": [
+                  "Attivazione",
+                  "Variazione",
+                  "Cessazione"
+                ]
+              },
+              "Immagine": {
+                "type": "string",
+                "format": "byte"
+              },
+              "Totale": {
+                "type": "number"
+              },
+              "TotaleAttivazione": {
+                "type": "number"
+              },
+              "TotaleNonScontato": {
+                "type": "number"
+              },
+              "TotaleNonScontatoAttivazioni": {
+                "type": "number"
+              }
+            }
           }
-        ],
-        "required": [
-          "IDOfferta"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDOfferta": {
-            "type": "string",
-            "description": "FK verso Offerta."
-          },
-          "IDArticolo": {
-            "type": "string",
-            "description": "FK verso Articolo."
-          },
-          "IDSedeCliente": {
-            "type": "string",
-            "description": "FK verso SedeCliente."
-          },
-          "IDDettaglioContratto": {
-            "type": "string",
-            "description": "FK verso DettagliContratti."
-          },
-          "Posizione": {
-            "type": "integer"
-          },
-          "TipologiaArticolo": {
-            "type": "string",
-            "description": "Sempre 'Canone'."
-          },
-          "CodiceProdotto": {
-            "type": "string"
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "Note": {
-            "type": "string"
-          },
-          "UnitaDiMisura": {
-            "type": "string",
-            "enum": [
-              "NR",
-              "H",
-              "PZ"
-            ]
-          },
-          "Quantita": {
-            "type": "number"
-          },
-          "Prezzo": {
-            "type": "number"
-          },
-          "CostoDiAttivazione": {
-            "type": "number"
-          },
-          "DescrizioneDettagliata": {
-            "type": "string"
-          },
-          "PercorsoImmagine": {
-            "type": "string"
-          },
-          "Sconto": {
-            "type": "number"
-          },
-          "ScontoAttivazione": {
-            "type": "number"
-          },
-          "StatoServizio": {
-            "type": "string"
-          },
-          "TipoSconto": {
-            "type": "string",
-            "enum": [
-              "Percentuale",
-              "Prezzo"
-            ]
-          },
-          "TipoScontoAttivazione": {
-            "type": "string",
-            "enum": [
-              "Percentuale",
-              "Prezzo"
-            ]
-          },
-          "RicorrenzaPagamento": {
-            "type": "string",
-            "enum": [
-              "Mensile",
-              "Bimestrale",
-              "Trimestrale",
-              "Quadrimestrale",
-              "Semestrale",
-              "Annuale"
-            ]
-          },
-          "GiàAttivo": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DurataFatturazione": {
-            "type": "integer"
-          },
-          "Causale": {
-            "type": "string",
-            "enum": [
-              "Attivazione",
-              "Variazione",
-              "Cessazione"
-            ]
-          },
-          "Immagine": {
-            "type": "string",
-            "format": "byte"
-          },
-          "Totale": {
-            "type": "number"
-          },
-          "TotaleAttivazione": {
-            "type": "number"
-          },
-          "TotaleNonScontato": {
-            "type": "number"
-          },
-          "TotaleNonScontatoAttivazioni": {
-            "type": "number"
-          }
-        }
+        ]
       },
       "CanoneOffertaSearchResponse": {
         "type": "object",
@@ -1951,68 +1995,70 @@
         }
       },
       "CanoneOrdine": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDOrdine",
+              "IDArticolo",
+              "IDDettaglioOfferta"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDOrdine": {
+                "type": "string",
+                "description": "FK verso Ordine."
+              },
+              "IDArticolo": {
+                "type": "string",
+                "description": "FK verso Articolo."
+              },
+              "IDSedeCliente": {
+                "type": "string",
+                "description": "FK verso SedeCliente."
+              },
+              "IDDettaglioOfferta": {
+                "type": "string",
+                "description": "FK verso CanoneOfferta/MerceOfferta."
+              },
+              "IDDettaglioContratto": {
+                "type": "string",
+                "description": "FK verso DettagliContratti."
+              },
+              "Causale": {
+                "type": "string",
+                "enum": [
+                  "Attivazione",
+                  "Variazione",
+                  "Cessazione"
+                ]
+              },
+              "TipologiaArticolo": {
+                "type": "string",
+                "description": "Sempre 'Canone'."
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "Quantita": {
+                "type": "number"
+              },
+              "NumeroPratica": {
+                "type": "string"
+              },
+              "Gestito": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDOrdine",
-          "IDArticolo",
-          "IDDettaglioOfferta"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDOrdine": {
-            "type": "string",
-            "description": "FK verso Ordine."
-          },
-          "IDArticolo": {
-            "type": "string",
-            "description": "FK verso Articolo."
-          },
-          "IDSedeCliente": {
-            "type": "string",
-            "description": "FK verso SedeCliente."
-          },
-          "IDDettaglioOfferta": {
-            "type": "string",
-            "description": "FK verso CanoneOfferta/MerceOfferta."
-          },
-          "IDDettaglioContratto": {
-            "type": "string",
-            "description": "FK verso DettagliContratti."
-          },
-          "Causale": {
-            "type": "string",
-            "enum": [
-              "Attivazione",
-              "Variazione",
-              "Cessazione"
-            ]
-          },
-          "TipologiaArticolo": {
-            "type": "string",
-            "description": "Sempre 'Canone'."
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "Quantita": {
-            "type": "number"
-          },
-          "NumeroPratica": {
-            "type": "string"
-          },
-          "Gestito": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          }
-        }
+        ]
       },
       "CanoneOrdineSearchResponse": {
         "type": "object",
@@ -2030,24 +2076,26 @@
         }
       },
       "CategoriaOmogenea": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "Descrizione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "Descrizione": {
-            "type": "string"
+          {
+            "type": "object",
+            "required": [
+              "Descrizione"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Descrizione": {
+                "type": "string"
+              }
+            }
           }
-        }
+        ]
       },
       "CategoriaOmogeneaSearchResponse": {
         "type": "object",
@@ -2065,24 +2113,26 @@
         }
       },
       "CategoriaMerceologica": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "Descrizione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "Descrizione": {
-            "type": "string"
+          {
+            "type": "object",
+            "required": [
+              "Descrizione"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Descrizione": {
+                "type": "string"
+              }
+            }
           }
-        }
+        ]
       },
       "CategoriaMerceologicaSearchResponse": {
         "type": "object",
@@ -2100,50 +2150,52 @@
         }
       },
       "CausaleTrasporto": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "Descrizione",
+              "Giacenza",
+              "Disponibilita"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "Giacenza": {
+                "type": "string",
+                "enum": [
+                  "Aumenta",
+                  "Decrementa",
+                  "Ignora"
+                ]
+              },
+              "Disponibilita": {
+                "type": "string",
+                "enum": [
+                  "Aumenta",
+                  "Decrementa",
+                  "Ignora"
+                ]
+              },
+              "SegueFattura": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DaControllare": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        ],
-        "required": [
-          "Descrizione",
-          "Giacenza",
-          "Disponibilita"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "Giacenza": {
-            "type": "string",
-            "enum": [
-              "Aumenta",
-              "Decrementa",
-              "Ignora"
-            ]
-          },
-          "Disponibilita": {
-            "type": "string",
-            "enum": [
-              "Aumenta",
-              "Decrementa",
-              "Ignora"
-            ]
-          },
-          "SegueFattura": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DaControllare": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          }
-        }
+        ]
       },
       "CausaleTrasportoSearchResponse": {
         "type": "object",
@@ -2161,95 +2213,97 @@
         }
       },
       "ChiamataCliente": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "Sorgente",
+              "Destinazione",
+              "DurataInSecondi",
+              "Data",
+              "Tipo",
+              "ImportFileName",
+              "FornitoreChiamate"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "Sorgente": {
+                "type": "string"
+              },
+              "Destinazione": {
+                "type": "string"
+              },
+              "DurataInSecondi": {
+                "type": "integer"
+              },
+              "Data": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "Fatturato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "CostoChiamata": {
+                "type": "number"
+              },
+              "Note": {
+                "type": "string"
+              },
+              "Tipo": {
+                "type": "string",
+                "enum": [
+                  "cps",
+                  "wlr",
+                  "voip",
+                  "800",
+                  "telegramma"
+                ]
+              },
+              "ImportFileName": {
+                "type": "string"
+              },
+              "FornitoreChiamate": {
+                "type": "string",
+                "enum": [
+                  "twt",
+                  "clouditalia"
+                ]
+              },
+              "IDNumerazioneContratto": {
+                "type": "string",
+                "description": "FK verso NumerazioneContratto."
+              },
+              "IDFattura": {
+                "type": "string",
+                "description": "FK verso Fatture."
+              },
+              "TipoNumeroDestinazione": {
+                "type": "string",
+                "enum": [
+                  "Nazionale",
+                  "Internazionale",
+                  "Cellulare",
+                  "800",
+                  "Pagamento"
+                ]
+              },
+              "Direttrice": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "Sorgente",
-          "Destinazione",
-          "DurataInSecondi",
-          "Data",
-          "Tipo",
-          "ImportFileName",
-          "FornitoreChiamate"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "Sorgente": {
-            "type": "string"
-          },
-          "Destinazione": {
-            "type": "string"
-          },
-          "DurataInSecondi": {
-            "type": "integer"
-          },
-          "Data": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "Fatturato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "CostoChiamata": {
-            "type": "number"
-          },
-          "Note": {
-            "type": "string"
-          },
-          "Tipo": {
-            "type": "string",
-            "enum": [
-              "cps",
-              "wlr",
-              "voip",
-              "800",
-              "telegramma"
-            ]
-          },
-          "ImportFileName": {
-            "type": "string"
-          },
-          "FornitoreChiamate": {
-            "type": "string",
-            "enum": [
-              "twt",
-              "clouditalia"
-            ]
-          },
-          "IDNumerazioneContratto": {
-            "type": "string",
-            "description": "FK verso NumerazioneContratto."
-          },
-          "IDFattura": {
-            "type": "string",
-            "description": "FK verso Fatture."
-          },
-          "TipoNumeroDestinazione": {
-            "type": "string",
-            "enum": [
-              "Nazionale",
-              "Internazionale",
-              "Cellulare",
-              "800",
-              "Pagamento"
-            ]
-          },
-          "Direttrice": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "ChiamataClienteSearchResponse": {
         "type": "object",
@@ -2267,29 +2321,31 @@
         }
       },
       "CLINumerazione": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "IDNumerazioneContratto",
-          "Numerazione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "IDNumerazioneContratto": {
-            "type": "string",
-            "description": "FK verso NumerazioneContratto."
-          },
-          "Numerazione": {
-            "type": "string"
+          {
+            "type": "object",
+            "required": [
+              "IDNumerazioneContratto",
+              "Numerazione"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDNumerazioneContratto": {
+                "type": "string",
+                "description": "FK verso NumerazioneContratto."
+              },
+              "Numerazione": {
+                "type": "string"
+              }
+            }
           }
-        }
+        ]
       },
       "CLINumerazioneSearchResponse": {
         "type": "object",
@@ -2307,81 +2363,83 @@
         }
       },
       "Contratto": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDCliente",
+              "IDCondizionePagamento",
+              "Numero",
+              "Data",
+              "Descrizione"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "IDCondizionePagamento": {
+                "type": "string",
+                "description": "FK verso CondizionePagamento."
+              },
+              "Numero": {
+                "type": "string"
+              },
+              "Data": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "Banca": {
+                "type": "string"
+              },
+              "IBAN": {
+                "type": "string"
+              },
+              "Note": {
+                "type": "string"
+              },
+              "SDI": {
+                "type": "string"
+              },
+              "Disdettato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DataDisdetta": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "CIG": {
+                "type": "string"
+              },
+              "CUP": {
+                "type": "string"
+              },
+              "BonusTelefonici": {
+                "type": "string",
+                "enum": [
+                  "No",
+                  "1000 Minuti",
+                  "2000 Minuti",
+                  "3000 Minuti",
+                  "4000 Minuti",
+                  "5000 Minuti",
+                  "Flat"
+                ]
+              }
+            }
           }
-        ],
-        "required": [
-          "IDCliente",
-          "IDCondizionePagamento",
-          "Numero",
-          "Data",
-          "Descrizione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "IDCondizionePagamento": {
-            "type": "string",
-            "description": "FK verso CondizionePagamento."
-          },
-          "Numero": {
-            "type": "string"
-          },
-          "Data": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "Banca": {
-            "type": "string"
-          },
-          "IBAN": {
-            "type": "string"
-          },
-          "Note": {
-            "type": "string"
-          },
-          "SDI": {
-            "type": "string"
-          },
-          "Disdettato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DataDisdetta": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "CIG": {
-            "type": "string"
-          },
-          "CUP": {
-            "type": "string"
-          },
-          "BonusTelefonici": {
-            "type": "string",
-            "enum": [
-              "No",
-              "1000 Minuti",
-              "2000 Minuti",
-              "3000 Minuti",
-              "4000 Minuti",
-              "5000 Minuti",
-              "Flat"
-            ]
-          }
-        }
+        ]
       },
       "ContrattoSearchResponse": {
         "type": "object",
@@ -2399,128 +2457,130 @@
         }
       },
       "DettaglioContratto": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDArticolo",
+              "IDContratto",
+              "Quantita",
+              "Prezzo"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDArticolo": {
+                "type": "string",
+                "description": "FK verso Articolo."
+              },
+              "IDContratto": {
+                "type": "string",
+                "description": "FK verso Contratto."
+              },
+              "IDSedeCliente": {
+                "type": "string",
+                "description": "FK verso SedeCliente."
+              },
+              "Posizione": {
+                "type": "integer"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "DescrizioneDettagliata": {
+                "type": "string"
+              },
+              "Note": {
+                "type": "string"
+              },
+              "RicorrenzaPagamento": {
+                "type": "string",
+                "enum": [
+                  "Mensile",
+                  "Bimestrale",
+                  "Trimestrale",
+                  "Quadrimestrale",
+                  "Semestrale",
+                  "Annuale"
+                ]
+              },
+              "UnitaDiMisura": {
+                "type": "string",
+                "enum": [
+                  "NR",
+                  "H",
+                  "PZ"
+                ]
+              },
+              "Quantita": {
+                "type": "number"
+              },
+              "Prezzo": {
+                "type": "number"
+              },
+              "Sconto": {
+                "type": "number"
+              },
+              "CostoAttivazione": {
+                "type": "number"
+              },
+              "ScontoAttivazione": {
+                "type": "number"
+              },
+              "Attivo": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DataAttivazione": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "DataInizioFatturazione": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "DataFineFatturazione": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "Cessato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "NumeroPratica": {
+                "type": "string"
+              },
+              "Fatturabile": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DataAccettazione": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "DurataFatturazione": {
+                "type": "integer"
+              },
+              "UltimaAttivitaCommerciale": {
+                "type": "string",
+                "enum": [
+                  "Attivazione",
+                  "Cessazione",
+                  "Variazione"
+                ]
+              },
+              "AttivazioneFatturata": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDArticolo",
-          "IDContratto",
-          "Quantita",
-          "Prezzo"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDArticolo": {
-            "type": "string",
-            "description": "FK verso Articolo."
-          },
-          "IDContratto": {
-            "type": "string",
-            "description": "FK verso Contratto."
-          },
-          "IDSedeCliente": {
-            "type": "string",
-            "description": "FK verso SedeCliente."
-          },
-          "Posizione": {
-            "type": "integer"
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "DescrizioneDettagliata": {
-            "type": "string"
-          },
-          "Note": {
-            "type": "string"
-          },
-          "RicorrenzaPagamento": {
-            "type": "string",
-            "enum": [
-              "Mensile",
-              "Bimestrale",
-              "Trimestrale",
-              "Quadrimestrale",
-              "Semestrale",
-              "Annuale"
-            ]
-          },
-          "UnitaDiMisura": {
-            "type": "string",
-            "enum": [
-              "NR",
-              "H",
-              "PZ"
-            ]
-          },
-          "Quantita": {
-            "type": "number"
-          },
-          "Prezzo": {
-            "type": "number"
-          },
-          "Sconto": {
-            "type": "number"
-          },
-          "CostoAttivazione": {
-            "type": "number"
-          },
-          "ScontoAttivazione": {
-            "type": "number"
-          },
-          "Attivo": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DataAttivazione": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "DataInizioFatturazione": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "DataFineFatturazione": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "Cessato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "NumeroPratica": {
-            "type": "string"
-          },
-          "Fatturabile": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DataAccettazione": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "DurataFatturazione": {
-            "type": "integer"
-          },
-          "UltimaAttivitaCommerciale": {
-            "type": "string",
-            "enum": [
-              "Attivazione",
-              "Cessazione",
-              "Variazione"
-            ]
-          },
-          "AttivazioneFatturata": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          }
-        }
+        ]
       },
       "DettagliContrattiSearchResponse": {
         "type": "object",
@@ -2539,81 +2599,83 @@
         }
       },
       "DettaglioDocumentoDiTrasporto": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDCausaleTrasporto",
+              "CodiceProdotto",
+              "IDDocumentoDiTrasporto",
+              "PrezzoUnitario"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDArticolo": {
+                "type": "string",
+                "description": "FK verso Articolo."
+              },
+              "IDCausaleTrasporto": {
+                "type": "string",
+                "description": "FK verso CausaleTrasporto."
+              },
+              "CodiceProdotto": {
+                "type": "string"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "UnitaDiMisura": {
+                "type": "string",
+                "enum": [
+                  "NR",
+                  "H",
+                  "PZ"
+                ]
+              },
+              "Quantita": {
+                "type": "number"
+              },
+              "IDDocumentoDiTrasporto": {
+                "type": "string",
+                "description": "FK verso DocumentoDiTrasporto."
+              },
+              "PrezzoUnitario": {
+                "type": "number"
+              },
+              "IDRiferimento": {
+                "type": "string"
+              },
+              "TipoRiferimento": {
+                "type": "string",
+                "enum": [
+                  "Contratto",
+                  "Ticket",
+                  "Ordine"
+                ]
+              },
+              "ScontoUnitario": {
+                "type": "number"
+              },
+              "TipoSconto": {
+                "type": "string",
+                "enum": [
+                  "Percentuale",
+                  "Prezzo"
+                ]
+              },
+              "Rientrato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDCausaleTrasporto",
-          "CodiceProdotto",
-          "IDDocumentoDiTrasporto",
-          "PrezzoUnitario"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDArticolo": {
-            "type": "string",
-            "description": "FK verso Articolo."
-          },
-          "IDCausaleTrasporto": {
-            "type": "string",
-            "description": "FK verso CausaleTrasporto."
-          },
-          "CodiceProdotto": {
-            "type": "string"
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "UnitaDiMisura": {
-            "type": "string",
-            "enum": [
-              "NR",
-              "H",
-              "PZ"
-            ]
-          },
-          "Quantita": {
-            "type": "number"
-          },
-          "IDDocumentoDiTrasporto": {
-            "type": "string",
-            "description": "FK verso DocumentoDiTrasporto."
-          },
-          "PrezzoUnitario": {
-            "type": "number"
-          },
-          "IDRiferimento": {
-            "type": "string"
-          },
-          "TipoRiferimento": {
-            "type": "string",
-            "enum": [
-              "Contratto",
-              "Ticket",
-              "Ordine"
-            ]
-          },
-          "ScontoUnitario": {
-            "type": "number"
-          },
-          "TipoSconto": {
-            "type": "string",
-            "enum": [
-              "Percentuale",
-              "Prezzo"
-            ]
-          },
-          "Rientrato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          }
-        }
+        ]
       },
       "DettaglioDocumentoDiTrasportoSearchResponse": {
         "type": "object",
@@ -2631,82 +2693,84 @@
         }
       },
       "DettaglioFattura": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDFattura",
+              "TipoRiga",
+              "Quantita",
+              "Prezzo"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDFattura": {
+                "type": "string",
+                "description": "FK verso Fatture."
+              },
+              "IDRiferimento": {
+                "type": "string"
+              },
+              "TipoRiferimento": {
+                "type": "string"
+              },
+              "Posizione": {
+                "type": "integer"
+              },
+              "TipoRiga": {
+                "type": "string",
+                "enum": [
+                  "Merce",
+                  "Canone",
+                  "Servizio",
+                  "Nota"
+                ]
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "UnitaDiMisura": {
+                "type": "string",
+                "enum": [
+                  "NR",
+                  "H",
+                  "PZ"
+                ]
+              },
+              "Quantita": {
+                "type": "number"
+              },
+              "Prezzo": {
+                "type": "number"
+              },
+              "IDArticolo": {
+                "type": "string",
+                "description": "FK verso Articolo."
+              },
+              "DataInizioCompetenza": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "DataFineCompetenza": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "Sconto": {
+                "type": "number"
+              },
+              "InFatturaElettronica": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDFattura",
-          "TipoRiga",
-          "Quantita",
-          "Prezzo"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDFattura": {
-            "type": "string",
-            "description": "FK verso Fatture."
-          },
-          "IDRiferimento": {
-            "type": "string"
-          },
-          "TipoRiferimento": {
-            "type": "string"
-          },
-          "Posizione": {
-            "type": "integer"
-          },
-          "TipoRiga": {
-            "type": "string",
-            "enum": [
-              "Merce",
-              "Canone",
-              "Servizio",
-              "Nota"
-            ]
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "UnitaDiMisura": {
-            "type": "string",
-            "enum": [
-              "NR",
-              "H",
-              "PZ"
-            ]
-          },
-          "Quantita": {
-            "type": "number"
-          },
-          "Prezzo": {
-            "type": "number"
-          },
-          "IDArticolo": {
-            "type": "string",
-            "description": "FK verso Articolo."
-          },
-          "DataInizioCompetenza": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "DataFineCompetenza": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "Sconto": {
-            "type": "number"
-          },
-          "InFatturaElettronica": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          }
-        }
+        ]
       },
       "DettaglioFatturaSearchResponse": {
         "type": "object",
@@ -2724,120 +2788,122 @@
         }
       },
       "DocumentoDiTrasporto": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDCliente",
+              "Numero",
+              "Descrizione",
+              "DataPartenza"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "IDUtente": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "IDGestionale": {
+                "type": "string"
+              },
+              "Data": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "Numero": {
+                "type": "string"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "RagioneSociale": {
+                "type": "string"
+              },
+              "Citta": {
+                "type": "string"
+              },
+              "Indirizzo": {
+                "type": "string"
+              },
+              "Provincia": {
+                "type": "string"
+              },
+              "CAP": {
+                "type": "string"
+              },
+              "Email": {
+                "type": "string"
+              },
+              "IDSedeCliente": {
+                "type": "string",
+                "description": "FK verso SedeCliente."
+              },
+              "Vettore": {
+                "type": "string"
+              },
+              "DataPartenza": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "AspettoBeni": {
+                "type": "string",
+                "enum": [
+                  "Scatole",
+                  "Bobine",
+                  "Sfuso",
+                  "A Vista"
+                ]
+              },
+              "ResponsabileTrasporto": {
+                "type": "string",
+                "enum": [
+                  "Mittente",
+                  "Destinatario"
+                ]
+              },
+              "NumeroColli": {
+                "type": "integer"
+              },
+              "Peso": {
+                "type": "number"
+              },
+              "Note": {
+                "type": "string"
+              },
+              "Annullato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "CIG": {
+                "type": "string"
+              },
+              "CUP": {
+                "type": "string"
+              },
+              "Fatturato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "IDFattura": {
+                "type": "string",
+                "description": "FK verso Fatture."
+              },
+              "DettagliInvio": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "IDCliente",
-          "Numero",
-          "Descrizione",
-          "DataPartenza"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "IDUtente": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "IDGestionale": {
-            "type": "string"
-          },
-          "Data": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "Numero": {
-            "type": "string"
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "RagioneSociale": {
-            "type": "string"
-          },
-          "Citta": {
-            "type": "string"
-          },
-          "Indirizzo": {
-            "type": "string"
-          },
-          "Provincia": {
-            "type": "string"
-          },
-          "CAP": {
-            "type": "string"
-          },
-          "Email": {
-            "type": "string"
-          },
-          "IDSedeCliente": {
-            "type": "string",
-            "description": "FK verso SedeCliente."
-          },
-          "Vettore": {
-            "type": "string"
-          },
-          "DataPartenza": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "AspettoBeni": {
-            "type": "string",
-            "enum": [
-              "Scatole",
-              "Bobine",
-              "Sfuso",
-              "A Vista"
-            ]
-          },
-          "ResponsabileTrasporto": {
-            "type": "string",
-            "enum": [
-              "Mittente",
-              "Destinatario"
-            ]
-          },
-          "NumeroColli": {
-            "type": "integer"
-          },
-          "Peso": {
-            "type": "number"
-          },
-          "Note": {
-            "type": "string"
-          },
-          "Annullato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "CIG": {
-            "type": "string"
-          },
-          "CUP": {
-            "type": "string"
-          },
-          "Fatturato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "IDFattura": {
-            "type": "string",
-            "description": "FK verso Fatture."
-          },
-          "DettagliInvio": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "DocumentoDiTrasportoSearchResponse": {
         "type": "object",
@@ -2855,63 +2921,65 @@
         }
       },
       "Fattura": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDCliente",
+              "Data"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "IDERP": {
+                "type": "integer"
+              },
+              "Numero": {
+                "type": "string"
+              },
+              "Data": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "CIG": {
+                "type": "string"
+              },
+              "CUP": {
+                "type": "string"
+              },
+              "ModelloContabile": {
+                "type": "string",
+                "enum": [
+                  "Fattura",
+                  "Fattura Differita"
+                ]
+              },
+              "IDCondizionePagamento": {
+                "type": "string",
+                "description": "FK verso CondizionePagamento."
+              },
+              "Tag": {
+                "type": "string"
+              },
+              "Riferimento": {
+                "type": "string"
+              },
+              "DataRiferimento": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDCliente",
-          "Data"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "IDERP": {
-            "type": "integer"
-          },
-          "Numero": {
-            "type": "string"
-          },
-          "Data": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "CIG": {
-            "type": "string"
-          },
-          "CUP": {
-            "type": "string"
-          },
-          "ModelloContabile": {
-            "type": "string",
-            "enum": [
-              "Fattura",
-              "Fattura Differita"
-            ]
-          },
-          "IDCondizionePagamento": {
-            "type": "string",
-            "description": "FK verso CondizionePagamento."
-          },
-          "Tag": {
-            "type": "string"
-          },
-          "Riferimento": {
-            "type": "string"
-          },
-          "DataRiferimento": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          }
-        }
+        ]
       },
       "FattureSearchResponse": {
         "type": "object",
@@ -2929,27 +2997,29 @@
         }
       },
       "GruppoPrefissi": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "Descrizione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "Descrizione": {
-            "type": "string"
-          },
-          "Note": {
-            "type": "string"
+          {
+            "type": "object",
+            "required": [
+              "Descrizione"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "Note": {
+                "type": "string"
+              }
+            }
           }
-        }
+        ]
       },
       "GruppoPrefissiSearchResponse": {
         "type": "object",
@@ -2967,43 +3037,45 @@
         }
       },
       "ImmagineArticolo": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDArticolo",
+              "Nome",
+              "Tipo",
+              "ContentBytes",
+              "ContentType"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDArticolo": {
+                "type": "string",
+                "description": "FK verso Articolo."
+              },
+              "Tipo": {
+                "type": "string",
+                "description": "Sempre 'Immagine'."
+              },
+              "ContentBytes": {
+                "type": "string",
+                "format": "byte"
+              },
+              "ContentType": {
+                "type": "string"
+              },
+              "Nome": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "IDArticolo",
-          "Nome",
-          "Tipo",
-          "ContentBytes",
-          "ContentType"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDArticolo": {
-            "type": "string",
-            "description": "FK verso Articolo."
-          },
-          "Tipo": {
-            "type": "string",
-            "description": "Sempre 'Immagine'."
-          },
-          "ContentBytes": {
-            "type": "string",
-            "format": "byte"
-          },
-          "ContentType": {
-            "type": "string"
-          },
-          "Nome": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "ImmagineArticoloSearchResponse": {
         "type": "object",
@@ -3021,30 +3093,32 @@
         }
       },
       "ListinoChiamate": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "Descrizione"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "Note": {
+                "type": "string"
+              },
+              "Direttrice": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "Descrizione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "Note": {
-            "type": "string"
-          },
-          "Direttrice": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "ListinoChiamateSearchResponse": {
         "type": "object",
@@ -3062,24 +3136,26 @@
         }
       },
       "MarcaArticolo": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
-          }
-        ],
-        "required": [
-          "Nome"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
           },
-          "Nome": {
-            "type": "string"
+          {
+            "type": "object",
+            "required": [
+              "Nome"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Nome": {
+                "type": "string"
+              }
+            }
           }
-        }
+        ]
       },
       "MarcaArticoloSearchResponse": {
         "type": "object",
@@ -3097,100 +3173,102 @@
         }
       },
       "MerceOfferta": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDOfferta"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDOfferta": {
+                "type": "string",
+                "description": "FK verso Offerta."
+              },
+              "IDArticolo": {
+                "type": "string",
+                "description": "FK verso Articolo."
+              },
+              "IDSedeCliente": {
+                "type": "string",
+                "description": "FK verso SedeCliente."
+              },
+              "Posizione": {
+                "type": "integer"
+              },
+              "TipologiaArticolo": {
+                "type": "string",
+                "description": "Sempre 'Merce'."
+              },
+              "CodiceProdotto": {
+                "type": "string"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "Note": {
+                "type": "string"
+              },
+              "UnitaDiMisura": {
+                "type": "string",
+                "enum": [
+                  "NR",
+                  "H",
+                  "PZ"
+                ]
+              },
+              "Quantita": {
+                "type": "number"
+              },
+              "Prezzo": {
+                "type": "number"
+              },
+              "DescrizioneDettagliata": {
+                "type": "string"
+              },
+              "PercorsoImmagine": {
+                "type": "string"
+              },
+              "Sconto": {
+                "type": "number"
+              },
+              "StatoServizio": {
+                "type": "string"
+              },
+              "TipoSconto": {
+                "type": "string",
+                "enum": [
+                  "Percentuale",
+                  "Prezzo"
+                ]
+              },
+              "Causale": {
+                "type": "string",
+                "enum": [
+                  "Vendita",
+                  "Ritiro",
+                  "Comodato"
+                ]
+              },
+              "Immagine": {
+                "type": "string",
+                "format": "byte"
+              },
+              "Totale": {
+                "type": "number"
+              },
+              "TotaleNonScontato": {
+                "type": "number"
+              }
+            }
           }
-        ],
-        "required": [
-          "IDOfferta"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDOfferta": {
-            "type": "string",
-            "description": "FK verso Offerta."
-          },
-          "IDArticolo": {
-            "type": "string",
-            "description": "FK verso Articolo."
-          },
-          "IDSedeCliente": {
-            "type": "string",
-            "description": "FK verso SedeCliente."
-          },
-          "Posizione": {
-            "type": "integer"
-          },
-          "TipologiaArticolo": {
-            "type": "string",
-            "description": "Sempre 'Merce'."
-          },
-          "CodiceProdotto": {
-            "type": "string"
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "Note": {
-            "type": "string"
-          },
-          "UnitaDiMisura": {
-            "type": "string",
-            "enum": [
-              "NR",
-              "H",
-              "PZ"
-            ]
-          },
-          "Quantita": {
-            "type": "number"
-          },
-          "Prezzo": {
-            "type": "number"
-          },
-          "DescrizioneDettagliata": {
-            "type": "string"
-          },
-          "PercorsoImmagine": {
-            "type": "string"
-          },
-          "Sconto": {
-            "type": "number"
-          },
-          "StatoServizio": {
-            "type": "string"
-          },
-          "TipoSconto": {
-            "type": "string",
-            "enum": [
-              "Percentuale",
-              "Prezzo"
-            ]
-          },
-          "Causale": {
-            "type": "string",
-            "enum": [
-              "Vendita",
-              "Ritiro",
-              "Comodato"
-            ]
-          },
-          "Immagine": {
-            "type": "string",
-            "format": "byte"
-          },
-          "Totale": {
-            "type": "number"
-          },
-          "TotaleNonScontato": {
-            "type": "number"
-          }
-        }
+        ]
       },
       "MerceOffertaSearchResponse": {
         "type": "object",
@@ -3208,64 +3286,66 @@
         }
       },
       "MerceOrdine": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDOrdine",
+              "IDArticolo",
+              "IDDettaglioOfferta"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDOrdine": {
+                "type": "string",
+                "description": "FK verso Ordine."
+              },
+              "IDArticolo": {
+                "type": "string",
+                "description": "FK verso Articolo."
+              },
+              "IDSedeCliente": {
+                "type": "string",
+                "description": "FK verso SedeCliente."
+              },
+              "IDDettaglioOfferta": {
+                "type": "string",
+                "description": "FK verso MerceOfferta."
+              },
+              "Causale": {
+                "type": "string",
+                "enum": [
+                  "Vendita",
+                  "Ritiro",
+                  "Comodato"
+                ]
+              },
+              "TipologiaArticolo": {
+                "type": "string",
+                "description": "Sempre 'Merce'."
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "Quantita": {
+                "type": "number"
+              },
+              "NumeroPratica": {
+                "type": "string"
+              },
+              "Gestito": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDOrdine",
-          "IDArticolo",
-          "IDDettaglioOfferta"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDOrdine": {
-            "type": "string",
-            "description": "FK verso Ordine."
-          },
-          "IDArticolo": {
-            "type": "string",
-            "description": "FK verso Articolo."
-          },
-          "IDSedeCliente": {
-            "type": "string",
-            "description": "FK verso SedeCliente."
-          },
-          "IDDettaglioOfferta": {
-            "type": "string",
-            "description": "FK verso MerceOfferta."
-          },
-          "Causale": {
-            "type": "string",
-            "enum": [
-              "Vendita",
-              "Ritiro",
-              "Comodato"
-            ]
-          },
-          "TipologiaArticolo": {
-            "type": "string",
-            "description": "Sempre 'Merce'."
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "Quantita": {
-            "type": "number"
-          },
-          "NumeroPratica": {
-            "type": "string"
-          },
-          "Gestito": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          }
-        }
+        ]
       },
       "MerceOrdineSearchResponse": {
         "type": "object",
@@ -3283,83 +3363,85 @@
         }
       },
       "NumerazioneContratto": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDCanoneCollegato"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDFornitore": {
+                "type": "string",
+                "description": "FK verso Cliente (di tipo Fornitore)."
+              },
+              "IDCanoneCollegato": {
+                "type": "string",
+                "description": "FK verso DettagliContratti."
+              },
+              "Tipo": {
+                "type": "string",
+                "enum": [
+                  "VoIP",
+                  "PSTN",
+                  "ISDN",
+                  "PRI"
+                ]
+              },
+              "GNR": {
+                "type": "string",
+                "enum": [
+                  "No",
+                  "10",
+                  "100",
+                  "1000"
+                ]
+              },
+              "Suffisso": {
+                "type": "string"
+              },
+              "InPortabilita": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "CodiceDiMigrazione": {
+                "type": "string"
+              },
+              "IDListinoChiamate": {
+                "type": "string",
+                "description": "FK verso ListinoChiamate."
+              },
+              "IDPrefissoTelefonico": {
+                "type": "string",
+                "description": "FK verso PrefissoTelefonico."
+              },
+              "Bonus": {
+                "type": "string",
+                "enum": [
+                  "No",
+                  "1000 Minuti",
+                  "2000 Minuti",
+                  "3000 Minuti",
+                  "4000 Minuti",
+                  "5000 Minuti",
+                  "Flat"
+                ]
+              },
+              "CostoGestionePratica": {
+                "type": "number"
+              },
+              "CodiceDiMigrazioneOperatorePrecedente": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "IDCanoneCollegato"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDFornitore": {
-            "type": "string",
-            "description": "FK verso Cliente (di tipo Fornitore)."
-          },
-          "IDCanoneCollegato": {
-            "type": "string",
-            "description": "FK verso DettagliContratti."
-          },
-          "Tipo": {
-            "type": "string",
-            "enum": [
-              "VoIP",
-              "PSTN",
-              "ISDN",
-              "PRI"
-            ]
-          },
-          "GNR": {
-            "type": "string",
-            "enum": [
-              "No",
-              "10",
-              "100",
-              "1000"
-            ]
-          },
-          "Suffisso": {
-            "type": "string"
-          },
-          "InPortabilita": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "CodiceDiMigrazione": {
-            "type": "string"
-          },
-          "IDListinoChiamate": {
-            "type": "string",
-            "description": "FK verso ListinoChiamate."
-          },
-          "IDPrefissoTelefonico": {
-            "type": "string",
-            "description": "FK verso PrefissoTelefonico."
-          },
-          "Bonus": {
-            "type": "string",
-            "enum": [
-              "No",
-              "1000 Minuti",
-              "2000 Minuti",
-              "3000 Minuti",
-              "4000 Minuti",
-              "5000 Minuti",
-              "Flat"
-            ]
-          },
-          "CostoGestionePratica": {
-            "type": "number"
-          },
-          "CodiceDiMigrazioneOperatorePrecedente": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "NumerazioneContrattoSearchResponse": {
         "type": "object",
@@ -3377,74 +3459,76 @@
         }
       },
       "NumerazioneOfferta": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDFornitore": {
+                "type": "string",
+                "description": "FK verso Cliente (di tipo Fornitore)."
+              },
+              "IDCanoneCollegato": {
+                "type": "string",
+                "description": "FK verso CanoneOfferta."
+              },
+              "Tipo": {
+                "type": "string",
+                "enum": [
+                  "VoIP",
+                  "PSTN",
+                  "ISDN",
+                  "PRI"
+                ]
+              },
+              "GNR": {
+                "type": "string",
+                "enum": [
+                  "No",
+                  "10",
+                  "100",
+                  "1000"
+                ]
+              },
+              "Suffisso": {
+                "type": "string"
+              },
+              "InPortabilita": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "CodiceDiMigrazione": {
+                "type": "string"
+              },
+              "CodiceDiMigrazioneOperatorePrecedente": {
+                "type": "string"
+              },
+              "IDListinoChiamate": {
+                "type": "string",
+                "description": "FK verso ListinoChiamate."
+              },
+              "IDPrefissoTelefonico": {
+                "type": "string",
+                "description": "FK verso PrefissoTelefonico."
+              },
+              "OperatorePrecedente": {
+                "type": "string"
+              },
+              "TecnologiaOperatorePrecedente": {
+                "type": "string"
+              },
+              "CostoGestionePratica": {
+                "type": "number"
+              }
+            }
           }
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDFornitore": {
-            "type": "string",
-            "description": "FK verso Cliente (di tipo Fornitore)."
-          },
-          "IDCanoneCollegato": {
-            "type": "string",
-            "description": "FK verso CanoneOfferta."
-          },
-          "Tipo": {
-            "type": "string",
-            "enum": [
-              "VoIP",
-              "PSTN",
-              "ISDN",
-              "PRI"
-            ]
-          },
-          "GNR": {
-            "type": "string",
-            "enum": [
-              "No",
-              "10",
-              "100",
-              "1000"
-            ]
-          },
-          "Suffisso": {
-            "type": "string"
-          },
-          "InPortabilita": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "CodiceDiMigrazione": {
-            "type": "string"
-          },
-          "CodiceDiMigrazioneOperatorePrecedente": {
-            "type": "string"
-          },
-          "IDListinoChiamate": {
-            "type": "string",
-            "description": "FK verso ListinoChiamate."
-          },
-          "IDPrefissoTelefonico": {
-            "type": "string",
-            "description": "FK verso PrefissoTelefonico."
-          },
-          "OperatorePrecedente": {
-            "type": "string"
-          },
-          "TecnologiaOperatorePrecedente": {
-            "type": "string"
-          },
-          "CostoGestionePratica": {
-            "type": "number"
-          }
-        }
+        ]
       },
       "NumerazioneOffertaSearchResponse": {
         "type": "object",
@@ -3462,147 +3546,149 @@
         }
       },
       "Offerta": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDCliente",
+              "IDUtente",
+              "Descrizione"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDUtente": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "IDCondizionePagamento": {
+                "type": "string",
+                "description": "FK verso CondizionePagamento."
+              },
+              "IDOpportunita": {
+                "type": "string",
+                "description": "FK verso Opportunita."
+              },
+              "Numero": {
+                "type": "string"
+              },
+              "Data": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "RagioneSociale": {
+                "type": "string"
+              },
+              "Indirizzo": {
+                "type": "string"
+              },
+              "CAP": {
+                "type": "string"
+              },
+              "Citta": {
+                "type": "string"
+              },
+              "Provincia": {
+                "type": "string"
+              },
+              "Banca": {
+                "type": "string"
+              },
+              "IBAN": {
+                "type": "string"
+              },
+              "Note": {
+                "type": "string"
+              },
+              "Email": {
+                "type": "string"
+              },
+              "SDI": {
+                "type": "string"
+              },
+              "PEC": {
+                "type": "string"
+              },
+              "PartitaIVA": {
+                "type": "string"
+              },
+              "CodiceFiscale": {
+                "type": "string"
+              },
+              "Status": {
+                "type": "string",
+                "enum": [
+                  "Attesa Conferma",
+                  "Accettato",
+                  "Rifiutato",
+                  "Scaduto",
+                  "Attesa Contratto"
+                ]
+              },
+              "Telefono": {
+                "type": "string"
+              },
+              "Fax": {
+                "type": "string"
+              },
+              "DataAccettazione": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "UrlFirmaElettronica": {
+                "type": "string"
+              },
+              "IDDocumentoFirmato": {
+                "type": "string"
+              },
+              "IDFirmaElettronica": {
+                "type": "string"
+              },
+              "CodiceCIG": {
+                "type": "string"
+              },
+              "CodiceCUP": {
+                "type": "string"
+              },
+              "Causale": {
+                "type": "string",
+                "enum": [
+                  "Nuovo Contratto",
+                  "Modifica Contratto"
+                ]
+              },
+              "IDContratto": {
+                "type": "string",
+                "description": "FK verso Contratto."
+              },
+              "LegaleRappresentante": {
+                "type": "string"
+              },
+              "CodiceFiscaleLegaleRappresentante": {
+                "type": "string"
+              },
+              "NoteDelivery": {
+                "type": "string"
+              },
+              "DataEvasionePrevista": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDCliente",
-          "IDUtente",
-          "Descrizione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDUtente": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "IDCondizionePagamento": {
-            "type": "string",
-            "description": "FK verso CondizionePagamento."
-          },
-          "IDOpportunita": {
-            "type": "string",
-            "description": "FK verso Opportunita."
-          },
-          "Numero": {
-            "type": "string"
-          },
-          "Data": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "RagioneSociale": {
-            "type": "string"
-          },
-          "Indirizzo": {
-            "type": "string"
-          },
-          "CAP": {
-            "type": "string"
-          },
-          "Citta": {
-            "type": "string"
-          },
-          "Provincia": {
-            "type": "string"
-          },
-          "Banca": {
-            "type": "string"
-          },
-          "IBAN": {
-            "type": "string"
-          },
-          "Note": {
-            "type": "string"
-          },
-          "Email": {
-            "type": "string"
-          },
-          "SDI": {
-            "type": "string"
-          },
-          "PEC": {
-            "type": "string"
-          },
-          "PartitaIVA": {
-            "type": "string"
-          },
-          "CodiceFiscale": {
-            "type": "string"
-          },
-          "Status": {
-            "type": "string",
-            "enum": [
-              "Attesa Conferma",
-              "Accettato",
-              "Rifiutato",
-              "Scaduto",
-              "Attesa Contratto"
-            ]
-          },
-          "Telefono": {
-            "type": "string"
-          },
-          "Fax": {
-            "type": "string"
-          },
-          "DataAccettazione": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "UrlFirmaElettronica": {
-            "type": "string"
-          },
-          "IDDocumentoFirmato": {
-            "type": "string"
-          },
-          "IDFirmaElettronica": {
-            "type": "string"
-          },
-          "CodiceCIG": {
-            "type": "string"
-          },
-          "CodiceCUP": {
-            "type": "string"
-          },
-          "Causale": {
-            "type": "string",
-            "enum": [
-              "Nuovo Contratto",
-              "Modifica Contratto"
-            ]
-          },
-          "IDContratto": {
-            "type": "string",
-            "description": "FK verso Contratto."
-          },
-          "LegaleRappresentante": {
-            "type": "string"
-          },
-          "CodiceFiscaleLegaleRappresentante": {
-            "type": "string"
-          },
-          "NoteDelivery": {
-            "type": "string"
-          },
-          "DataEvasionePrevista": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          }
-        }
+        ]
       },
       "OffertaSearchResponse": {
         "type": "object",
@@ -3620,79 +3706,81 @@
         }
       },
       "Opportunita": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "Oggetto",
+              "DataApertura",
+              "RiferimentoOpportunita",
+              "DataUltimaModifica"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "IDUtenteStaff": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "IDUtenteUltimaModifica": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "StatoAvanzamento": {
+                "type": "string",
+                "enum": [
+                  "Primo Contatto",
+                  "Inviata Proposta",
+                  "Contrattazione",
+                  "Proposta Chiusa Positivamente",
+                  "Proposta Chiusa Negativamente"
+                ]
+              },
+              "Oggetto": {
+                "type": "string"
+              },
+              "DataApertura": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "DataChiusura": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "RiferimentoOpportunita": {
+                "type": "string"
+              },
+              "DataUltimaModifica": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "Note": {
+                "type": "string"
+              },
+              "Esito": {
+                "type": "string"
+              },
+              "StatoLavorazione": {
+                "type": "string",
+                "enum": [
+                  "Aperto",
+                  "In Lavorazione",
+                  "Chiuso",
+                  "Sospeso"
+                ]
+              }
+            }
           }
-        ],
-        "required": [
-          "Oggetto",
-          "DataApertura",
-          "RiferimentoOpportunita",
-          "DataUltimaModifica"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "IDUtenteStaff": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "IDUtenteUltimaModifica": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "StatoAvanzamento": {
-            "type": "string",
-            "enum": [
-              "Primo Contatto",
-              "Inviata Proposta",
-              "Contrattazione",
-              "Proposta Chiusa Positivamente",
-              "Proposta Chiusa Negativamente"
-            ]
-          },
-          "Oggetto": {
-            "type": "string"
-          },
-          "DataApertura": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "DataChiusura": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "RiferimentoOpportunita": {
-            "type": "string"
-          },
-          "DataUltimaModifica": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "Note": {
-            "type": "string"
-          },
-          "Esito": {
-            "type": "string"
-          },
-          "StatoLavorazione": {
-            "type": "string",
-            "enum": [
-              "Aperto",
-              "In Lavorazione",
-              "Chiuso",
-              "Sospeso"
-            ]
-          }
-        }
+        ]
       },
       "OpportunitaSearchResponse": {
         "type": "object",
@@ -3710,64 +3798,66 @@
         }
       },
       "Ordine": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDCliente",
+              "IDOfferta",
+              "DataCreazione",
+              "Descrizione"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDCliente": {
+                "type": "string",
+                "description": "FK verso Cliente."
+              },
+              "IDOfferta": {
+                "type": "string",
+                "description": "FK verso Offerta."
+              },
+              "IDContratto": {
+                "type": "string",
+                "description": "FK verso Contratto."
+              },
+              "Evaso": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DataCreazione": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd HH:mm:ss."
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "CodiceCIG": {
+                "type": "string"
+              },
+              "CodiceCUP": {
+                "type": "string"
+              },
+              "Riferimento": {
+                "type": "integer"
+              },
+              "DataEvasionePrevista": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "DataEvasione": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDCliente",
-          "IDOfferta",
-          "DataCreazione",
-          "Descrizione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDCliente": {
-            "type": "string",
-            "description": "FK verso Cliente."
-          },
-          "IDOfferta": {
-            "type": "string",
-            "description": "FK verso Offerta."
-          },
-          "IDContratto": {
-            "type": "string",
-            "description": "FK verso Contratto."
-          },
-          "Evaso": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DataCreazione": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd HH:mm:ss."
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "CodiceCIG": {
-            "type": "string"
-          },
-          "CodiceCUP": {
-            "type": "string"
-          },
-          "Riferimento": {
-            "type": "integer"
-          },
-          "DataEvasionePrevista": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "DataEvasione": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          }
-        }
+        ]
       },
       "OrdineSearchResponse": {
         "type": "object",
@@ -3785,47 +3875,49 @@
         }
       },
       "PianoDiFatturazione": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "DataFatturazione",
+              "ImportoUnitario"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDDettaglioContratto": {
+                "type": "string",
+                "description": "FK verso DettagliContratti."
+              },
+              "DataFatturazione": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "Quantita": {
+                "type": "number"
+              },
+              "ImportoUnitario": {
+                "type": "number"
+              },
+              "Fatturato": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "IDFattura": {
+                "type": "string",
+                "description": "FK verso Fatture."
+              },
+              "ScontoUnitario": {
+                "type": "number"
+              }
+            }
           }
-        ],
-        "required": [
-          "DataFatturazione",
-          "ImportoUnitario"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDDettaglioContratto": {
-            "type": "string",
-            "description": "FK verso DettagliContratti."
-          },
-          "DataFatturazione": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "Quantita": {
-            "type": "number"
-          },
-          "ImportoUnitario": {
-            "type": "number"
-          },
-          "Fatturato": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "IDFattura": {
-            "type": "string",
-            "description": "FK verso Fatture."
-          },
-          "ScontoUnitario": {
-            "type": "number"
-          }
-        }
+        ]
       },
       "PianoDiFatturazioneSearchResponse": {
         "type": "object",
@@ -3843,35 +3935,37 @@
         }
       },
       "PrefissoTelefonico": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "Prefisso",
+              "Descrizione"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Prefisso": {
+                "type": "string"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "Regione": {
+                "type": "string"
+              },
+              "IDGruppoPrefissi": {
+                "type": "string",
+                "description": "FK verso GruppoPrefissi."
+              }
+            }
           }
-        ],
-        "required": [
-          "Prefisso",
-          "Descrizione"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "Prefisso": {
-            "type": "string"
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "Regione": {
-            "type": "string"
-          },
-          "IDGruppoPrefissi": {
-            "type": "string",
-            "description": "FK verso GruppoPrefissi."
-          }
-        }
+        ]
       },
       "PrefissoTelefonicoSearchResponse": {
         "type": "object",
@@ -3889,43 +3983,45 @@
         }
       },
       "SchedaTecnicaArticolo": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDArticolo",
+              "Nome",
+              "Tipo",
+              "ContentBytes",
+              "ContentType"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDArticolo": {
+                "type": "string",
+                "description": "FK verso Articolo."
+              },
+              "Tipo": {
+                "type": "string",
+                "description": "Sempre 'Scheda Tecnica'."
+              },
+              "ContentBytes": {
+                "type": "string",
+                "format": "byte"
+              },
+              "ContentType": {
+                "type": "string"
+              },
+              "Nome": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "IDArticolo",
-          "Nome",
-          "Tipo",
-          "ContentBytes",
-          "ContentType"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDArticolo": {
-            "type": "string",
-            "description": "FK verso Articolo."
-          },
-          "Tipo": {
-            "type": "string",
-            "description": "Sempre 'Scheda Tecnica'."
-          },
-          "ContentBytes": {
-            "type": "string",
-            "format": "byte"
-          },
-          "ContentType": {
-            "type": "string"
-          },
-          "Nome": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "SchedaTecnicaArticoloSearchResponse": {
         "type": "object",
@@ -3943,47 +4039,49 @@
         }
       },
       "OrarioDiLavoro": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "Descrizione",
+              "OraInizio",
+              "OraFine",
+              "Default"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "OraInizio": {
+                "type": "string",
+                "description": "Formato HH:mm:ss."
+              },
+              "OraFine": {
+                "type": "string",
+                "description": "Formato HH:mm:ss."
+              },
+              "OraInizioPausa": {
+                "type": "string",
+                "description": "Formato HH:mm:ss."
+              },
+              "OraFinePausa": {
+                "type": "string",
+                "description": "Formato HH:mm:ss."
+              },
+              "Default": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        ],
-        "required": [
-          "Descrizione",
-          "OraInizio",
-          "OraFine",
-          "Default"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "OraInizio": {
-            "type": "string",
-            "description": "Formato HH:mm:ss."
-          },
-          "OraFine": {
-            "type": "string",
-            "description": "Formato HH:mm:ss."
-          },
-          "OraInizioPausa": {
-            "type": "string",
-            "description": "Formato HH:mm:ss."
-          },
-          "OraFinePausa": {
-            "type": "string",
-            "description": "Formato HH:mm:ss."
-          },
-          "Default": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          }
-        }
+        ]
       },
       "OrarioDiLavoroSearchResponse": {
         "type": "object",
@@ -4001,58 +4099,60 @@
         }
       },
       "Presenza": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDUtente",
+              "Data"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDUtente": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "IDOrarioDiLavoro": {
+                "type": "string",
+                "description": "FK verso OrarioDiLavoro."
+              },
+              "Tipo": {
+                "type": "string",
+                "enum": [
+                  "Presenza",
+                  "Ferie",
+                  "Malattia",
+                  "Non Lavorativo"
+                ]
+              },
+              "Data": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "Ore": {
+                "type": "string",
+                "description": "Formato HH:mm:ss."
+              },
+              "Trasferta": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              },
+              "DescrizioneTrasferta": {
+                "type": "string"
+              },
+              "SmartWorking": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso."
+              }
+            }
           }
-        ],
-        "required": [
-          "IDUtente",
-          "Data"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDUtente": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "IDOrarioDiLavoro": {
-            "type": "string",
-            "description": "FK verso OrarioDiLavoro."
-          },
-          "Tipo": {
-            "type": "string",
-            "enum": [
-              "Presenza",
-              "Ferie",
-              "Malattia",
-              "Non Lavorativo"
-            ]
-          },
-          "Data": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "Ore": {
-            "type": "string",
-            "description": "Formato HH:mm:ss."
-          },
-          "Trasferta": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          },
-          "DescrizioneTrasferta": {
-            "type": "string"
-          },
-          "SmartWorking": {
-            "type": "integer",
-            "description": "Booleano: -1 vero, 0 falso."
-          }
-        }
+        ]
       },
       "PresenzaSearchResponse": {
         "type": "object",
@@ -4070,57 +4170,59 @@
         }
       },
       "RichiestaAssenza": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "required": [
+              "IDUtente",
+              "DataDa",
+              "DataA"
+            ],
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDUtente": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "DataDa": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "DataA": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "Tipo": {
+                "type": "string",
+                "enum": [
+                  "Ferie",
+                  "Malattia",
+                  "Ore di Permesso"
+                ]
+              },
+              "Conferma": {
+                "type": "string",
+                "enum": [
+                  "In Sospeso",
+                  "Approvato",
+                  "Non Approvato"
+                ]
+              },
+              "OreRichieste": {
+                "type": "string"
+              }
+            }
           }
-        ],
-        "required": [
-          "IDUtente",
-          "DataDa",
-          "DataA"
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDUtente": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "DataDa": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "DataA": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "Tipo": {
-            "type": "string",
-            "enum": [
-              "Ferie",
-              "Malattia",
-              "Ore di Permesso"
-            ]
-          },
-          "Conferma": {
-            "type": "string",
-            "enum": [
-              "In Sospeso",
-              "Approvato",
-              "Non Approvato"
-            ]
-          },
-          "OreRichieste": {
-            "type": "string"
-          }
-        }
+        ]
       },
       "RichiestaAssenzaSearchResponse": {
         "type": "object",
@@ -4138,32 +4240,34 @@
         }
       },
       "Straordinario": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DoFlags"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ID": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "IDUtente": {
+                "type": "string",
+                "description": "FK verso Utente."
+              },
+              "Descrizione": {
+                "type": "string"
+              },
+              "Data": {
+                "type": "string",
+                "description": "Formato yyyy-MM-dd."
+              },
+              "Ore": {
+                "type": "number"
+              }
+            }
           }
-        ],
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "IDUtente": {
-            "type": "string",
-            "description": "FK verso Utente."
-          },
-          "Descrizione": {
-            "type": "string"
-          },
-          "Data": {
-            "type": "string",
-            "description": "Formato yyyy-MM-dd."
-          },
-          "Ore": {
-            "type": "number"
-          }
-        }
+        ]
       },
       "StraordinarioSearchResponse": {
         "type": "object",
