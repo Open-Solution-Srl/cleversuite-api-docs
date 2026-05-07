@@ -4,7 +4,7 @@ CleverSuite è un CRM modulare. La sua API REST espone in lettura e scrittura le
 
 | Namespace | Ambito |
 |---|---|
-| `/CleverBase` | Dati anagrafici e operativi di base (clienti, utenti, ticket, attività, allegati, ecc.) |
+| `/CleverBase` | Anagrafiche, ticketing e documenti (clienti, utenti, ticket, attività, allegati, ecc.) |
 | `/CleverCRM` | Vendite, contratti, offerte, articoli, fatturazione, traffico telefonico |
 | `/CleverPresence` | Rilevazione presenze, ferie, straordinari |
 
@@ -19,7 +19,6 @@ CleverSuite è un CRM modulare. La sua API REST espone in lettura e scrittura le
    - 3.2 [Formato delle risposte](#32-formato-delle-risposte)
    - 3.3 [Filtri di ricerca](#33-filtri-di-ricerca)
    - 3.4 [Tipi e formati](#34-tipi-e-formati)
-   - 3.5 [Campi di sistema](#35-campi-di-sistema)
 4. [Endpoint — CleverBase](#4-endpoint--cleverbase)
 5. [Endpoint — CleverCRM](#5-endpoint--clevercrm)
 6. [Endpoint — CleverPresence](#6-endpoint--cleverpresence)
@@ -80,18 +79,14 @@ Nelle risposte di errore (`400`, `404`, `500`) il body è in `text/plain` e cont
 
 ### 3.2 Formato delle risposte
 
-**`GET /{endpoint}/{id}` — singola risorsa.** Restituisce direttamente l'oggetto JSON, in forma piatta:
+**`GET /{endpoint}/{id}` — singola risorsa.** Restituisce direttamente l'oggetto JSON:
 
 ```json
 {
-    "do_loaded": -1,
-    "do_updated": 0,
-    "do_inserted": 0,
-    "do_deleted": 0,
     "ID": "5C404CC1-FD82-4B94-B6A1-D9D593376169",
-    "Campo1": "Pippo",
-    "Campo2": "",
-    "Campo3": "Rapporto Ticket TCK-140064.pdf"
+    "Campo1": "Valore1",
+    "Campo2": "Valore2",
+    "Campo3": "Valore3"
 }
 ```
 
@@ -99,40 +94,37 @@ Nelle risposte di errore (`400`, `404`, `500`) il body è in `text/plain` e cont
 
 ```json
 {
-    "do_loaded": -1,
     "Risorsa": [
-        { "ID": "...", "Campo1": "Pippo",  ... },
-        { "ID": "...", "Campo1": "Pluto",  ... }
+        { "ID": "...", "Campo1": "ValoreX",  ... },
+        { "ID": "...", "Campo1": "ValoreY",  ... }
     ]
 }
 ```
 
-Se nessuna risorsa corrisponde ai filtri, l'array è omesso:
+Se nessuna risorsa corrisponde ai filtri, l'array è omesso e il body è un oggetto vuoto:
+
+```json
+{}
+```
+
+**`POST /{endpoint}` — body di inserimento.** È un singolo oggetto JSON. Il campo `ID` è opzionale: se fornito dal client viene usato (deve essere un GUID), altrimenti il server genera l'ID e lo restituisce in plain text con stato `200`.
 
 ```json
 {
-    "do_loaded": -1
+    "Campo1": "Valore1",
+    "Campo2": "Valore2",
+    "Campo3": "Valore3"
 }
 ```
 
-**`POST /{endpoint}` — body di inserimento.** È un singolo oggetto JSON piatto (non un array). Il campo `ID` è opzionale: se fornito dal client viene usato (deve essere un GUID), altrimenti il server genera l'ID e lo restituisce in plain text con stato `200`.
-
-```json
-{
-    "Campo1": "Pippo",
-    "Campo2": "",
-    "Campo3": "Rapporto Ticket TCK-140064.pdf"
-}
-```
-
-**`PUT /{endpoint}` — body di aggiornamento.** È un singolo oggetto JSON piatto, il campo `ID` è **obbligatorio**:
+**`PUT /{endpoint}` — body di aggiornamento.** È un singolo oggetto JSON, il campo `ID` è **obbligatorio**:
 
 ```json
 {
     "ID": "5C404CC1-FD82-4B94-B6A1-D9D593376169",
-    "Campo1": "Pippo",
-    "Campo2": "",
-    "Campo3": "Rapporto Ticket TCK-140064.pdf"
+    "Campo1": "Valore1",
+    "Campo2": "Valore2",
+    "Campo3": "Valore3"
 }
 ```
 
@@ -144,10 +136,10 @@ Sulla `GET` di ricerca i parametri di query corrispondono ai nomi dei campi dell
 - Tutti gli altri campi (testo, codici, descrizioni) fanno **match parziale** (`LIKE`).
 - Più parametri si combinano in **AND** logico.
 
-Esempio — clienti con ragione sociale che contiene "ECONET" e città uguale a "Roma":
+Esempio — clienti con ragione sociale che contiene "Azienda" e città uguale a "Roma":
 
 ```
-GET /CleverBase/Cliente?RagioneSociale=ECONET&Citta=Roma
+GET /CleverBase/Cliente?RagioneSociale=Azienda&Citta=Roma
 ```
 
 ### 3.4 Tipi e formati
@@ -161,19 +153,6 @@ GET /CleverBase/Cliente?RagioneSociale=ECONET&Citta=Roma
 | **Ora** | Stringa nel formato `HH:mm:ss` (per esempio `09:00:00`). |
 | **Allegati / file binari** | Stringa Base64 nel campo `ContentBytes` (o equivalente, vedi singola entità). Il campo `ContentType` riporta il MIME type. |
 | **Stringa vuota** | I campi opzionali non valorizzati sono spesso restituiti come `""` (incluse le foreign key non impostate). |
-
-### 3.5 Campi di sistema
-
-Tutte le risorse, in risposta, includono quattro flag interni del framework:
-
-| Campo | Descrizione |
-|---|---|
-| `do_loaded` | Indica che la risorsa è stata caricata dal server. Tipicamente vale `-1`. |
-| `do_updated` | Flag di stato per operazioni di aggiornamento. |
-| `do_inserted` | Flag di stato per operazioni di inserimento. |
-| `do_deleted` | Flag di stato per operazioni di eliminazione. |
-
-Sono **solo in lettura**: il client non deve includerli nei body di `POST` o `PUT`. Sono omessi nelle tabelle dei campi delle sezioni successive.
 
 ---
 
@@ -194,26 +173,6 @@ Allegati associati ai messaggi e ai ticket.
 | `ContentBytes` | string (Base64) | | Contenuto binario codificato in Base64. |
 | `ContentType` | string | | MIME type del file (es. `application/pdf`). |
 | `Dimensione` | integer | | Dimensione del file in byte. |
-
-Esempio di ricerca:
-
-```json
-{
-    "do_loaded": -1,
-    "Allegato": [
-        {
-            "do_loaded": -1, "do_updated": 0, "do_inserted": 0, "do_deleted": 0,
-            "ID": "5C404CC1-FD82-4B94-B6A1-D9D593376169",
-            "IDMessaggio": "75F6623C-B361-44A3-9B1D-54B10E2D311F",
-            "IDTicket": "",
-            "Nome": "Rapporto Ticket TCK-140064.pdf",
-            "ContentBytes": "JVBERi0xLjQKJ...",
-            "ContentType": "application/pdf",
-            "Dimensione": 100
-        }
-    ]
-}
-```
 
 ### 4.2 AllegatoAttivita
 
@@ -1340,13 +1299,12 @@ curl -H "username: utente@dominio.it" \
      https://{host}/CleverBase/Cliente/BA4A7337-6E46-474D-9DDD-44E76F5D09F5
 ```
 
-Risposta `200 OK` (oggetto piatto):
+Risposta `200 OK`:
 
 ```json
 {
-    "do_loaded": -1, "do_updated": 0, "do_inserted": 0, "do_deleted": 0,
     "ID": "BA4A7337-6E46-474D-9DDD-44E76F5D09F5",
-    "RagioneSociale": "ECONET SRL",
+    "RagioneSociale": "Azienda",
     "Tipo": 30,
     "Citta": "Roma",
     "...": "..."
@@ -1358,16 +1316,15 @@ Risposta `200 OK` (oggetto piatto):
 ```bash
 curl -H "username: utente@dominio.it" \
      -H "password: la-mia-password" \
-     "https://{host}/CleverBase/Cliente?RagioneSociale=ECONET"
+     "https://{host}/CleverBase/Cliente?RagioneSociale=Azienda"
 ```
 
 Risposta `200 OK`:
 
 ```json
 {
-    "do_loaded": -1,
     "Cliente": [
-        { "ID": "BA4A7337-...", "RagioneSociale": "ECONET SRL", "...": "..." }
+        { "ID": "BA4A7337-...", "RagioneSociale": "Azienda", "...": "..." }
     ]
 }
 ```
@@ -1404,7 +1361,7 @@ curl -X PUT \
      -d '{
            "ID": "7195FB7D-82FE-4FDA-819C-9A11933507E1",
            "Effettuato": -1,
-           "DescrizioneBreve": "Risolto via remoto"
+           "DescrizioneBreve": "Problema risolto"
          }' \
      https://{host}/CleverBase/Attivita
 ```
