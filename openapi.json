@@ -3,7 +3,7 @@
   "info": {
     "title": "API CleverSuite",
     "version": "1.0.0",
-    "description": "API REST del CRM CleverSuite. Tre namespace: `/CleverBase` (anagrafica e operativo), `/CleverCRM` (vendite, contratti, fatturazione, traffico telefonico), `/CleverPresence` (rilevazione presenze).\n\n## Convenzioni\n\n- **Autenticazione:** header HTTP `username` e `password` su ogni chiamata.\n- **Operazioni:** GET singola (`/endpoint/{id}`), GET ricerca (`/endpoint?Campo=valore`), POST (creazione, `ID` opzionale), PUT (aggiornamento, `ID` obbligatorio nel body), DELETE (`/endpoint/{id}`).\n- **Filtri di ricerca:** ID risorsa e foreign key fanno match esatto, gli altri campi fanno match parziale (LIKE), più parametri si combinano in AND.\n- **Booleani:** numero intero, `-1` = vero, `0` = falso.\n- **Date:** stringhe `yyyy-MM-dd`, `yyyy-MM-dd HH:mm:ss` o `HH:mm:ss`.\n- **GUID:** stringhe in formato canonico per ID e foreign key. Le foreign key non valorizzate vengono restituite come stringa vuota `\"\"`.\n- **Allegati binari:** Base64 nel campo `ContentBytes` (o equivalente), con MIME type in `ContentType`.\n- **Risposta GET singola:** oggetto JSON piatto.\n- **Risposta GET ricerca:** `{ NomeEntita: [...] }` (l'array è omesso se nessun risultato).\n- **Risposta POST:** `204` senza contenuto, oppure `200` con l'`ID` della nuova risorsa in `text/plain`.\n- **Risposta PUT/DELETE successo:** `204` senza contenuto.\n- **Errori:** body in `text/plain`.\n- **Errore 401 Unauthorized:** restituito se gli header `username`/`password` mancano o non corrispondono a un utente valido.\n- **Aggiornamento parziale (PUT):** solo `ID` è obbligatorio nel body. I campi obbligatori per la creazione, se inclusi nel body di un PUT, non possono essere null o stringa vuota."
+    "description": "API REST del CRM CleverSuite. Tre namespace: `/CleverBase` (anagrafiche e ticketing), `/CleverCRM` (vendite, contratti, fatturazione, traffico telefonico), `/CleverPresence` (rilevazione presenze).\n\n## Convenzioni\n\n- **Autenticazione:** header HTTP `Username` e `Password` su ogni chiamata.\n- **Operazioni:** GET singola (`/endpoint/{id}`), GET ricerca (`/endpoint?Campo=valore`), POST (creazione, `ID` opzionale), PUT (aggiornamento, `ID` obbligatorio nel body), DELETE (`/endpoint/{id}`).\n- **Filtri di ricerca:** ID risorsa e foreign key fanno match esatto, gli altri campi fanno match parziale (LIKE), più parametri si combinano in AND.\n- **Booleani:** numero intero, `-1` = vero, `0` = falso.\n- **Date:** stringhe `yyyy-MM-dd`, `yyyy-MM-dd HH:mm:ss` o `HH:mm:ss`.\n- **GUID:** stringhe in formato canonico per ID e foreign key. Le foreign key non valorizzate vengono restituite come stringa vuota `\"\"`.\n- **Allegati binari:** Base64 nel campo `ContentBytes` (o equivalente), con MIME type in `ContentType`.\n- **Risposta GET singola:** oggetto JSON piatto.\n- **Risposta GET ricerca:** `{ NomeEntita: [...] }` (l'array è omesso se nessun risultato).\n- **Risposta POST:** `204` senza contenuto, oppure `200` con l'`ID` della nuova risorsa in `text/plain`.\n- **Risposta PUT/DELETE successo:** `204` senza contenuto.\n- **Errori:** body in `text/plain`.\n- **Errore 401 Unauthorized:** restituito se gli header `Username`/`Password` mancano o non corrispondono a un utente valido.\n- **Aggiornamento parziale (PUT):** solo `ID` è obbligatorio nel body. I campi obbligatori per la creazione, se inclusi nel body di un PUT, non possono essere null o stringa vuota."
   },
   "servers": [
     {
@@ -33,22 +33,22 @@
   ],
   "security": [
     {
-      "username": [],
-      "password": []
+      "Username": [],
+      "Password": []
     }
   ],
   "components": {
     "securitySchemes": {
-      "username": {
+      "Username": {
         "type": "apiKey",
         "in": "header",
-        "name": "username",
+        "name": "Username",
         "description": "Email dell'utente CleverSuite"
       },
-      "password": {
+      "Password": {
         "type": "apiKey",
         "in": "header",
-        "name": "password",
+        "name": "Password",
         "description": "Password dell'utente CleverSuite"
       }
     },
@@ -90,7 +90,7 @@
         "description": "Operazione eseguita con successo."
       },
       "Unauthorized": {
-        "description": "Credenziali (header `username` e/o `password`) mancanti o non valide.",
+        "description": "Credenziali (header `Username` e/o `Password`) mancanti o non valide.",
         "content": {
           "text/plain": {
             "schema": {
