@@ -338,7 +338,7 @@ Documenti caricati e collegati a un cliente (offerte, ordini, contratti scansion
 
 Email e messaggi della conversazione del CRM.
 
-**Endpoint:** `/CleverBase/Messaggi`
+**Endpoint:** `/CleverBase/Messaggio`
 
 > Nelle risposte di ricerca l'array è esposto sotto la chiave `Messaggio` (singolare).
 

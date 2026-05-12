@@ -8578,7 +8578,7 @@
         }
       }
     },
-    "/CleverBase/Messaggi": {
+    "/CleverBase/Messaggio": {
       "get": {
         "tags": [
           "CleverBase"
@@ -8700,7 +8700,7 @@
         }
       }
     },
-    "/CleverBase/Messaggi/{id}": {
+    "/CleverBase/Messaggio/{id}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/PathId"
