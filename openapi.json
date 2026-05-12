@@ -12812,7 +12812,7 @@
         }
       }
     },
-    "/CleverCRM/Fatture": {
+    "/CleverCRM/Fattura": {
       "get": {
         "tags": [
           "CleverCRM"
@@ -12934,7 +12934,7 @@
         }
       }
     },
-    "/CleverCRM/Fatture/{id}": {
+    "/CleverCRM/Fattura/{id}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/PathId"

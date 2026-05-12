@@ -917,7 +917,7 @@ Documenti di trasporto (DDT).
 
 Testate delle fatture emesse.
 
-**Endpoint:** `/CleverCRM/Fatture`
+**Endpoint:** `/CleverCRM/Fattura`
 
 > Nelle risposte di ricerca l'array è esposto sotto la chiave `Fattura`.
 
