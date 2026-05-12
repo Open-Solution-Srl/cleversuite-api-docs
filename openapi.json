@@ -12136,7 +12136,7 @@
         }
       }
     },
-    "/CleverCRM/DettagliContratti": {
+    "/CleverCRM/DettaglioContratto": {
       "get": {
         "tags": [
           "CleverCRM"
@@ -12250,7 +12250,7 @@
         }
       }
     },
-    "/CleverCRM/DettagliContratti/{id}": {
+    "/CleverCRM/DettaglioContratto/{id}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/PathId"

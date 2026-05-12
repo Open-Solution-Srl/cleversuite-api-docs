@@ -797,7 +797,7 @@ Contratti attivi con i clienti.
 
 Righe di dettaglio di un contratto.
 
-**Endpoint:** `/CleverCRM/DettagliContratti`
+**Endpoint:** `/CleverCRM/DettaglioContratto`
 
 > Nelle risposte di ricerca l'array è esposto sotto la chiave `DettaglioContratto`.
 
