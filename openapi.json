@@ -765,7 +765,11 @@
             "type": "string"
           },
           "Tipo": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "Ricevuto",
+              "Risposta"
+            ]
           },
           "CC": {
             "type": "string"
@@ -5763,7 +5767,11 @@
             "type": "string"
           },
           "Tipo": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "Ricevuto",
+              "Risposta"
+            ]
           },
           "CC": {
             "type": "string"
