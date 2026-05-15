@@ -303,6 +303,22 @@
           },
           "DescrizioneRiferimento": {
             "type": "string"
+          },
+          "AndataPartenza": {
+            "type": "string",
+            "description": "Formato HH:mm:ss."
+          },
+          "AndataArrivo": {
+            "type": "string",
+            "description": "Formato HH:mm:ss."
+          },
+          "RitornoPartenza": {
+            "type": "string",
+            "description": "Formato HH:mm:ss."
+          },
+          "RitornoArrivo": {
+            "type": "string",
+            "description": "Formato HH:mm:ss."
           }
         }
       },
@@ -1651,6 +1667,88 @@
             "description": "Booleano: -1 vero, 0 falso.",
             "examples": [
               0
+            ]
+          },
+          "Appellativo": {
+            "type": "string",
+            "enum": [
+              "Nessuno",
+              "Sig.",
+              "Sig.ra",
+              "Dott.",
+              "Dott.ssa",
+              "Ing.",
+              "Arch.",
+              "Avv.",
+              "Prof.",
+              "Prof.ssa",
+              "Rag.",
+              "Geom."
+            ]
+          },
+          "RuoloAziendale": {
+            "type": "string",
+            "enum": [
+              "Non specificato",
+              "Titolare",
+              "Amministratore",
+              "CEO",
+              "Amministratore Delegato",
+              "Direttore Generale",
+              "Socio",
+              "Legale Rappresentante",
+              "Responsabile Acquisti",
+              "Responsabile Amministrativo",
+              "Amministrazione",
+              "Contabilità",
+              "Responsabile Finanziario",
+              "CFO",
+              "Ufficio Pagamenti",
+              "Ufficio Fatturazione",
+              "Direttore Commerciale",
+              "Responsabile Commerciale",
+              "Commerciale",
+              "Sales Manager",
+              "Account Manager",
+              "Buyer",
+              "Responsabile Tecnico",
+              "Tecnico",
+              "IT Manager",
+              "Responsabile IT",
+              "Sistemista",
+              "Sviluppatore",
+              "Responsabile Produzione",
+              "Responsabile Manutenzione",
+              "Responsabile Qualità",
+              "Responsabile Marketing",
+              "Marketing",
+              "Comunicazione",
+              "Social Media Manager",
+              "E-commerce Manager",
+              "Responsabile HR",
+              "Ufficio Personale",
+              "Recruiter",
+              "Payroll",
+              "Paghe",
+              "Responsabile Logistica",
+              "Magazzino",
+              "Responsabile Magazzino",
+              "Ufficio Acquisti",
+              "Procurement Manager",
+              "Supply Chain Manager",
+              "Responsabile Customer Service",
+              "Customer Service",
+              "Back Office",
+              "Front Office",
+              "Segreteria",
+              "Responsabile Legale",
+              "Ufficio Legale",
+              "DPO",
+              "Responsabile Privacy",
+              "Compliance Manager",
+              "HSE",
+              "Sicurezza",
+              "Altro"
             ]
           }
         }
@@ -4235,6 +4333,22 @@
           },
           "DescrizioneRiferimento": {
             "type": "string"
+          },
+          "AndataPartenza": {
+            "type": "string",
+            "description": "Formato HH:mm:ss."
+          },
+          "AndataArrivo": {
+            "type": "string",
+            "description": "Formato HH:mm:ss."
+          },
+          "RitornoPartenza": {
+            "type": "string",
+            "description": "Formato HH:mm:ss."
+          },
+          "RitornoArrivo": {
+            "type": "string",
+            "description": "Formato HH:mm:ss."
           }
         }
       },
@@ -7187,6 +7301,88 @@
             "description": "Booleano: -1 vero, 0 falso.",
             "examples": [
               0
+            ]
+          },
+          "Appellativo": {
+            "type": "string",
+            "enum": [
+              "Nessuno",
+              "Sig.",
+              "Sig.ra",
+              "Dott.",
+              "Dott.ssa",
+              "Ing.",
+              "Arch.",
+              "Avv.",
+              "Prof.",
+              "Prof.ssa",
+              "Rag.",
+              "Geom."
+            ]
+          },
+          "RuoloAziendale": {
+            "type": "string",
+            "enum": [
+              "Non specificato",
+              "Titolare",
+              "Amministratore",
+              "CEO",
+              "Amministratore Delegato",
+              "Direttore Generale",
+              "Socio",
+              "Legale Rappresentante",
+              "Responsabile Acquisti",
+              "Responsabile Amministrativo",
+              "Amministrazione",
+              "Contabilità",
+              "Responsabile Finanziario",
+              "CFO",
+              "Ufficio Pagamenti",
+              "Ufficio Fatturazione",
+              "Direttore Commerciale",
+              "Responsabile Commerciale",
+              "Commerciale",
+              "Sales Manager",
+              "Account Manager",
+              "Buyer",
+              "Responsabile Tecnico",
+              "Tecnico",
+              "IT Manager",
+              "Responsabile IT",
+              "Sistemista",
+              "Sviluppatore",
+              "Responsabile Produzione",
+              "Responsabile Manutenzione",
+              "Responsabile Qualità",
+              "Responsabile Marketing",
+              "Marketing",
+              "Comunicazione",
+              "Social Media Manager",
+              "E-commerce Manager",
+              "Responsabile HR",
+              "Ufficio Personale",
+              "Recruiter",
+              "Payroll",
+              "Paghe",
+              "Responsabile Logistica",
+              "Magazzino",
+              "Responsabile Magazzino",
+              "Ufficio Acquisti",
+              "Procurement Manager",
+              "Supply Chain Manager",
+              "Responsabile Customer Service",
+              "Customer Service",
+              "Back Office",
+              "Front Office",
+              "Segreteria",
+              "Responsabile Legale",
+              "Ufficio Legale",
+              "DPO",
+              "Responsabile Privacy",
+              "Compliance Manager",
+              "HSE",
+              "Sicurezza",
+              "Altro"
             ]
           }
         }
