@@ -168,7 +168,7 @@ Allegati associati ai messaggi e ai ticket.
 |---|---|---|---|
 | `ID` | GUID | sì | Identificativo della risorsa. |
 | `IDMessaggio` | GUID | | FK verso [Messaggi](#49-messaggi). |
-| `IDTicket` | GUID | | FK verso [Ticket](#417-ticket). |
+| `IDTicket` | GUID | | FK verso [Ticket](#416-ticket). |
 | `Nome` | string | | Nome del file. |
 | `ContentBytes` | string (Base64) | | Contenuto binario codificato in Base64. |
 | `ContentType` | string | | MIME type del file (es. `application/pdf`). |
@@ -197,12 +197,12 @@ Attività (telefonate, email, interventi, note operative) associate a un utente,
 | Campo | Tipo | Obbl. | Note |
 |---|---|---|---|
 | `ID` | GUID | | |
-| `IDUtente` | GUID | | FK verso [Utente](#420-utente). |
-| `IDTipoAttivita` | GUID | sì | FK verso [TipoAttivita](#418-tipoattivita). |
-| `IDCliente` | GUID | | FK verso [Utente](#420-utente). |
-| `IDFornitore` | GUID | | FK verso [Utente](#420-utente). |
+| `IDUtente` | GUID | | FK verso [Utente](#419-utente). |
+| `IDTipoAttivita` | GUID | sì | FK verso [TipoAttivita](#417-tipoattivita). |
+| `IDCliente` | GUID | | FK verso [Utente](#419-utente). |
+| `IDFornitore` | GUID | | FK verso [Utente](#419-utente). |
 | `IDRiferimento` | GUID | | ID di un'altra entità a cui l'attività fa riferimento (Ticket, Opportunità, ecc.). |
-| `IDUtenteCreato` | GUID | | FK verso [Utente](#420-utente). Utente che ha creato l'attività. |
+| `IDUtenteCreato` | GUID | | FK verso [Utente](#419-utente). Utente che ha creato l'attività. |
 | `DataAttivita` | datetime | | Data e ora a cui si riferisce l'attività. |
 | `Durata` | integer | | Durata in minuti. |
 | `DescrizioneDettagliata` | string | | |
@@ -312,9 +312,9 @@ Documenti caricati e collegati a un cliente (offerte, ordini, contratti scansion
 | Campo | Tipo | Obbl. | Note |
 |---|---|---|---|
 | `ID` | GUID | | |
-| `IDUtenteStaff` | GUID | | FK verso [Utente](#420-utente). |
+| `IDUtenteStaff` | GUID | | FK verso [Utente](#419-utente). |
 | `IDCliente` | GUID | | FK verso [Cliente](#45-cliente). |
-| `IDTipologiaDocumento` | GUID | | FK verso [TipologiaDocumento](#419-tipologiadocumento). |
+| `IDTipologiaDocumento` | GUID | | FK verso [TipologiaDocumento](#418-tipologiadocumento). |
 | `IDRiferimento` | GUID | | |
 | `DescrizioneRiferimento` | string | | |
 | `DataDocumento` | date | | |
@@ -345,7 +345,7 @@ Email e messaggi della conversazione del CRM.
 | Campo | Tipo | Obbl. | Note |
 |---|---|---|---|
 | `ID` | GUID | | |
-| `IDUtente` | GUID | sì | FK verso [Utente](#420-utente). |
+| `IDUtente` | GUID | sì | FK verso [Utente](#419-utente). |
 | `IDRiferimento` | GUID | | |
 | `Corpo` | string | | Corpo del messaggio (può contenere HTML). |
 | `DataMessaggio` | datetime | sì | |
@@ -355,32 +355,7 @@ Email e messaggi della conversazione del CRM.
 | `Tipo` | string | | Es. `"Risposta"`. |
 | `CC` | string | | Destinatari in copia conoscenza. |
 
-### 4.10 MessaggioWhatsapp
-
-Messaggi WhatsApp ricevuti/inviati associati a un contatto.
-
-**Endpoint:** `/CleverBase/MessaggioWhatsapp`
-
-| Campo | Tipo | Obbl. | Note |
-|---|---|---|---|
-| `ID` | string | | Identificativo WhatsApp del messaggio (formato `wamid.*`). |
-| `IDUtenteStaff` | GUID | | FK verso [Utente](#420-utente). |
-| `IDNumerazione` | string | sì | Numerazione interna che ha gestito il messaggio. |
-| `NumeroContatto` | string | sì | Numero di telefono del contatto esterno. |
-| `DataMessaggio` | datetime | sì | |
-| `Gestito` | boolean | | |
-| `Corpo` | string | | |
-| `Allegato` | string (Base64) | | Contenuto binario dell'allegato. |
-| `Inoltrato` | string | | |
-| `MimeTypeAllegato` | string | | |
-| `NomeAllegato` | string | | |
-| `IDGestitoDa` | GUID | | FK verso [Utente](#420-utente). |
-| `IDRiferimento` | GUID | | |
-| `DescrizioneRiferimento` | string | | |
-| `NicknameContatto` | string | | |
-| `Template` | boolean | | |
-
-### 4.11 RapportoRisolutivo
+### 4.10 RapportoRisolutivo
 
 Rapportini di chiusura di un ticket.
 
@@ -389,11 +364,11 @@ Rapportini di chiusura di un ticket.
 | Campo | Tipo | Obbl. | Note |
 |---|---|---|---|
 | `ID` | GUID | | |
-| `IDTicket` | GUID | | FK verso [Ticket](#417-ticket). |
-| `IDSottocategoriaTicket` | GUID | sì | FK verso [SottocategoriaTicket](#416-sottocategoriaticket). |
+| `IDTicket` | GUID | | FK verso [Ticket](#416-ticket). |
+| `IDSottocategoriaTicket` | GUID | sì | FK verso [SottocategoriaTicket](#415-sottocategoriaticket). |
 | `Titolo` | string | sì | |
 | `NoteCliente` | string | sì | Note visibili al cliente. |
-| `IDUtente` | GUID | | FK verso [Utente](#420-utente). |
+| `IDUtente` | GUID | | FK verso [Utente](#419-utente). |
 | `NoteTecniche` | string | | Note interne. |
 | `OreLavorateOnSite` | number | | |
 | `OreLavorateDaRemoto` | number | | |
@@ -403,7 +378,7 @@ Rapportini di chiusura di un ticket.
 | `IDFattura` | GUID | | FK verso [Fatture](#514-fatture). |
 | `AssistenzaSpecialistica` | boolean | | |
 
-### 4.12 Reparto
+### 4.11 Reparto
 
 Reparti dell'azienda che gestiscono i ticket.
 
@@ -423,7 +398,7 @@ Reparti dell'azienda che gestiscono i ticket.
 | `MostraInHelpdeskManager` | boolean | | |
 | `MostraInPortaleClienti` | boolean | | |
 
-### 4.13 RichiestaAnagrafica
+### 4.12 RichiestaAnagrafica
 
 Richieste di creazione/modifica anagrafica cliente in attesa di approvazione.
 
@@ -457,7 +432,7 @@ Richieste di creazione/modifica anagrafica cliente in attesa di approvazione.
 | `TipoAnagrafica` | enum | sì | `"Persona Fisica"`, `"Persona Giuridica"`, `"Pubblica Amministrazione"`. |
 | `IDCondizionePagamento` | GUID | | FK verso [CondizionePagamento](#47-condizionepagamento). |
 
-### 4.14 SedeCliente
+### 4.13 SedeCliente
 
 Sedi operative/secondarie associate a un cliente.
 
@@ -478,7 +453,7 @@ Sedi operative/secondarie associate a un cliente.
 | `Codice` | string | sì | Codice progressivo della sede. |
 | `Attiva` | boolean | | |
 
-### 4.15 SedeRichiestaAnagrafica
+### 4.14 SedeRichiestaAnagrafica
 
 Sedi associate a una richiesta di anagrafica.
 
@@ -501,9 +476,9 @@ Sedi associate a una richiesta di anagrafica.
 | `Email` | string | | |
 | `Codice` | string | sì | |
 | `Attiva` | boolean | | |
-| `IDRichiestaAnagrafica` | GUID | sì | FK verso [RichiestaAnagrafica](#413-richiestaanagrafica). |
+| `IDRichiestaAnagrafica` | GUID | sì | FK verso [RichiestaAnagrafica](#412-richiestaanagrafica). |
 
-### 4.16 SottocategoriaTicket
+### 4.15 SottocategoriaTicket
 
 Sottocategorie di una categoria ticket.
 
@@ -515,7 +490,7 @@ Sottocategorie di una categoria ticket.
 | `IDCategoriaTicket` | GUID | sì | FK verso [CategoriaTicket](#44-categoriaticket). |
 | `Sottocategoria` | string | sì | |
 
-### 4.17 Ticket
+### 4.16 Ticket
 
 Richieste di assistenza dei clienti.
 
@@ -525,10 +500,10 @@ Richieste di assistenza dei clienti.
 |---|---|---|---|
 | `ID` | GUID | | |
 | `IDCliente` | GUID | | FK verso [Cliente](#45-cliente). |
-| `IDReparto` | GUID | sì | FK verso [Reparto](#412-reparto). |
-| `IDUtenteCliente` | GUID | | FK verso [Utente](#420-utente). |
-| `IDUtenteStaff` | GUID | | FK verso [Utente](#420-utente). |
-| `IDUtenteUltimaModifica` | GUID | | FK verso [Utente](#420-utente). |
+| `IDReparto` | GUID | sì | FK verso [Reparto](#411-reparto). |
+| `IDUtenteCliente` | GUID | | FK verso [Utente](#419-utente). |
+| `IDUtenteStaff` | GUID | | FK verso [Utente](#419-utente). |
+| `IDUtenteUltimaModifica` | GUID | | FK verso [Utente](#419-utente). |
 | `Oggetto` | string | sì | |
 | `DataApertura` | datetime | sì | |
 | `DataChiusura` | datetime | | |
@@ -537,9 +512,9 @@ Richieste di assistenza dei clienti.
 | `Note` | string | | |
 | `StatoTicket` | enum | | `"Aperto"`, `"In Lavorazione"`, `"Chiuso"`, `"Sospeso"`. |
 | `Priorita` | enum | | `"Bassa"`, `"Media"`, `"Alta"`. |
-| `IDCategoria` | GUID | | FK verso [SottocategoriaTicket](#416-sottocategoriaticket). |
+| `IDCategoria` | GUID | | FK verso [SottocategoriaTicket](#415-sottocategoriaticket). |
 
-### 4.18 TipoAttivita
+### 4.17 TipoAttivita
 
 Tipi di attività configurabili (segreteria, intervento on-site, telefonata, ecc.).
 
@@ -562,7 +537,7 @@ Tipi di attività configurabili (segreteria, intervento on-site, telefonata, ecc
 | `Bloccato` | boolean | | |
 | `ColoreRGB` | string | | Colore in formato `R, G, B`. |
 
-### 4.19 TipologiaDocumento
+### 4.18 TipologiaDocumento
 
 Tipologie configurabili di documenti.
 
@@ -573,7 +548,7 @@ Tipologie configurabili di documenti.
 | `ID` | GUID | | |
 | `Tipo` | string | sì | |
 
-### 4.20 Utente
+### 4.19 Utente
 
 Utenti del sistema (staff e contatti dei clienti).
 
@@ -646,7 +621,7 @@ Righe canone di un'offerta.
 | `ID` | GUID | | |
 | `IDOfferta` | GUID | sì | FK verso [Offerta](#523-offerta). |
 | `IDArticolo` | GUID | | FK verso [Articolo](#51-articolo). |
-| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#414-sedecliente). |
+| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#413-sedecliente). |
 | `IDDettaglioContratto` | GUID | | FK verso [DettagliContratti](#510-dettaglicontratti). |
 | `Posizione` | integer | | Posizione nella riga d'offerta. |
 | `TipologiaArticolo` | string | | Sempre `"Canone"`. |
@@ -685,7 +660,7 @@ Righe canone di un ordine.
 | `ID` | GUID | | |
 | `IDOrdine` | GUID | sì | FK verso [Ordine](#525-ordine). |
 | `IDArticolo` | GUID | sì | FK verso [Articolo](#51-articolo). |
-| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#414-sedecliente). |
+| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#413-sedecliente). |
 | `IDDettaglioOfferta` | GUID | sì | FK verso [CanoneOfferta](#52-canoneofferta) / [MerceOfferta](#519-merceofferta). |
 | `IDDettaglioContratto` | GUID | | FK verso [DettagliContratti](#510-dettaglicontratti). |
 | `Causale` | enum | | `"Attivazione"`, `"Variazione"`, `"Cessazione"`. |
@@ -806,7 +781,7 @@ Righe di dettaglio di un contratto.
 | `ID` | GUID | | |
 | `IDArticolo` | GUID | sì | FK verso [Articolo](#51-articolo). |
 | `IDContratto` | GUID | sì | FK verso [Contratto](#59-contratto). |
-| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#414-sedecliente). |
+| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#413-sedecliente). |
 | `Posizione` | integer | | |
 | `Descrizione` | string | | |
 | `DescrizioneDettagliata` | string | | |
@@ -887,7 +862,7 @@ Documenti di trasporto (DDT).
 |---|---|---|---|
 | `ID` | GUID | | |
 | `IDCliente` | GUID | sì | FK verso [Cliente](#45-cliente). |
-| `IDUtente` | GUID | | FK verso [Utente](#420-utente). |
+| `IDUtente` | GUID | | FK verso [Utente](#419-utente). |
 | `IDGestionale` | string | | Codice del documento nel gestionale esterno. |
 | `Data` | datetime | | |
 | `Numero` | string | sì | |
@@ -898,7 +873,7 @@ Documenti di trasporto (DDT).
 | `Provincia` | string | | |
 | `CAP` | string | | |
 | `Email` | string | | |
-| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#414-sedecliente). |
+| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#413-sedecliente). |
 | `Vettore` | string | | |
 | `DataPartenza` | datetime | sì | |
 | `AspettoBeni` | enum | | `"Scatole"`, `"Bobine"`, `"Sfuso"`, `"A Vista"`. |
@@ -998,7 +973,7 @@ Righe merce di un'offerta.
 | `ID` | GUID | | |
 | `IDOfferta` | GUID | sì | FK verso [Offerta](#523-offerta). |
 | `IDArticolo` | GUID | | FK verso [Articolo](#51-articolo). |
-| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#414-sedecliente). |
+| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#413-sedecliente). |
 | `Posizione` | integer | | |
 | `TipologiaArticolo` | string | | Sempre `"Merce"`. |
 | `CodiceProdotto` | string | | |
@@ -1028,7 +1003,7 @@ Righe merce di un ordine.
 | `ID` | GUID | | |
 | `IDOrdine` | GUID | sì | FK verso [Ordine](#525-ordine). |
 | `IDArticolo` | GUID | sì | FK verso [Articolo](#51-articolo). |
-| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#414-sedecliente). |
+| `IDSedeCliente` | GUID | | FK verso [SedeCliente](#413-sedecliente). |
 | `IDDettaglioOfferta` | GUID | sì | FK verso [MerceOfferta](#519-merceofferta). |
 | `Causale` | enum | | `"Vendita"`, `"Ritiro"`, `"Comodato"`. |
 | `TipologiaArticolo` | string | | Sempre `"Merce"`. |
@@ -1091,7 +1066,7 @@ Offerte commerciali emesse verso un cliente.
 | Campo | Tipo | Obbl. | Note |
 |---|---|---|---|
 | `ID` | GUID | | |
-| `IDUtente` | GUID | sì | FK verso [Utente](#420-utente). |
+| `IDUtente` | GUID | sì | FK verso [Utente](#419-utente). |
 | `IDCliente` | GUID | sì | FK verso [Cliente](#45-cliente). |
 | `IDCondizionePagamento` | GUID | | FK verso [CondizionePagamento](#47-condizionepagamento). |
 | `IDOpportunita` | GUID | | FK verso [Opportunita](#524-opportunita). |
@@ -1137,8 +1112,8 @@ Opportunità commerciali in corso o chiuse.
 |---|---|---|---|
 | `ID` | GUID | | |
 | `IDCliente` | GUID | | FK verso [Cliente](#45-cliente). |
-| `IDUtenteStaff` | GUID | | FK verso [Utente](#420-utente). |
-| `IDUtenteUltimaModifica` | GUID | | FK verso [Utente](#420-utente). |
+| `IDUtenteStaff` | GUID | | FK verso [Utente](#419-utente). |
+| `IDUtenteUltimaModifica` | GUID | | FK verso [Utente](#419-utente). |
 | `StatoAvanzamento` | enum | | `"Primo Contatto"`, `"Inviata Proposta"`, `"Contrattazione"`, `"Proposta Chiusa Positivamente"`, `"Proposta Chiusa Negativamente"`. |
 | `Oggetto` | string | sì | |
 | `DataApertura` | datetime | sì | |
@@ -1245,7 +1220,7 @@ Registrazione di una presenza/assenza giornaliera.
 | Campo | Tipo | Obbl. | Note |
 |---|---|---|---|
 | `ID` | GUID | | |
-| `IDUtente` | GUID | sì | FK verso [Utente](#420-utente). |
+| `IDUtente` | GUID | sì | FK verso [Utente](#419-utente). |
 | `IDOrarioDiLavoro` | GUID | | FK verso [OrarioDiLavoro](#61-orariodilavoro). |
 | `Tipo` | enum | | `"Presenza"`, `"Ferie"`, `"Malattia"`, `"Non Lavorativo"`. |
 | `Data` | date | sì | |
@@ -1263,7 +1238,7 @@ Richieste di ferie / permesso / malattia presentate da un utente.
 | Campo | Tipo | Obbl. | Note |
 |---|---|---|---|
 | `ID` | GUID | | |
-| `IDUtente` | GUID | sì | FK verso [Utente](#420-utente). |
+| `IDUtente` | GUID | sì | FK verso [Utente](#419-utente). |
 | `Descrizione` | string | | |
 | `DataDa` | date | sì | |
 | `DataA` | date | sì | |
@@ -1280,7 +1255,7 @@ Registrazione di ore di straordinario.
 | Campo | Tipo | Obbl. | Note |
 |---|---|---|---|
 | `ID` | GUID | | |
-| `IDUtente` | GUID | | FK verso [Utente](#420-utente). |
+| `IDUtente` | GUID | | FK verso [Utente](#419-utente). |
 | `Descrizione` | string | | |
 | `Data` | date | | |
 | `Ore` | number | | |
