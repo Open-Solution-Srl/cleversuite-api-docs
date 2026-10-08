@@ -1,5 +1,5 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.2.0",
   "info": {
     "title": "API CleverSuite",
     "version": "1.0.0",
@@ -1350,6 +1350,35 @@
             "items": {
               "$ref": "#/components/schemas/Ticket"
             }
+          }
+        }
+      },
+      "TicketSendRequest": {
+        "type": "object",
+        "required": [
+          "IDMessaggio"
+        ],
+        "properties": {
+          "IDMessaggio": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ID del Messaggio da inviare."
+          }
+        }
+      },
+      "TicketSendResponse": {
+        "type": "object",
+        "required": [
+          "Result"
+        ],
+        "properties": {
+          "Result": {
+            "type": "string",
+            "enum": [
+              "Success",
+              "Failed"
+            ],
+            "description": "Esito dell'invio: `Success` se il messaggio è stato inviato, `Failed` se l'invio è fallito."
           }
         }
       },
@@ -9934,6 +9963,52 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "additionalOperations": {
+        "SEND": {
+          "tags": [
+            "CleverBase"
+          ],
+          "summary": "Invia un Messaggio",
+          "description": "Metodo HTTP custom `SEND`. Invia il messaggio indicato dal campo `IDMessaggio` nel body. L'esito è restituito nel campo `Result`.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TicketSendRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Esito dell'invio.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TicketSendResponse"
+                  },
+                  "examples": {
+                    "Success": {
+                      "value": {
+                        "Result": "Success"
+                      }
+                    },
+                    "Failed": {
+                      "value": {
+                        "Result": "Failed"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            }
           }
         }
       }

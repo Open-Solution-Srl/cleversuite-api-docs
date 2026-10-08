@@ -61,7 +61,7 @@ curl -H "username: utente@dominio.it" \
 
 ### 3.1 Operazioni e codici di stato
 
-L'API segue uno schema CRUD uniforme per tutte le entità. I metodi supportati sono `GET`, `POST`, `PUT`, `DELETE`.
+L'API segue uno schema CRUD uniforme per tutte le entità. I metodi supportati sono `GET`, `POST`, `PUT`, `DELETE`. Il solo endpoint `/CleverBase/Ticket` supporta anche il metodo custom `SEND` (vedi [Ticket](#416-ticket)).
 
 | Operazione | Metodo + URL | Body | Risposta successo | Risposta errore |
 |---|---|---|---|---|
@@ -513,6 +513,22 @@ Richieste di assistenza dei clienti.
 | `StatoTicket` | enum | | `"Aperto"`, `"In Lavorazione"`, `"Chiuso"`, `"Sospeso"`. |
 | `Priorita` | enum | | `"Bassa"`, `"Media"`, `"Alta"`. |
 | `IDCategoria` | GUID | | FK verso [SottocategoriaTicket](#415-sottocategoriaticket). |
+
+#### Invio messaggio
+
+**Endpoint:** `SEND /CleverBase/Ticket`
+
+Invia un [Messaggio](#49-messaggi) esistente. Usa il metodo HTTP custom `SEND` sullo stesso endpoint del `POST`.
+
+| Campo | Tipo | Obbl. | Note |
+|---|---|---|---|
+| `IDMessaggio` | GUID | sì | ID del messaggio da inviare. |
+
+Risposta `200` in `application/json` con un solo campo `Result`: `"Success"` se l'invio è andato a buon fine, `"Failed"` se è fallito.
+
+```json
+{ "Result": "Success" }
+```
 
 ### 4.17 TipoAttivita
 
