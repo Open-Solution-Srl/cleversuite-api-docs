@@ -355,6 +355,15 @@ Email e messaggi della conversazione del CRM.
 | `Tipo` | string | | Es. `"Risposta"`. |
 | `CC` | string | | Destinatari in copia conoscenza. |
 
+**Campi aggiuntivi solo in inserimento (`POST`).** Permettono di inviare il messaggio contestualmente al salvataggio.
+
+| Campo | Tipo | Obbl. | Note |
+|---|---|---|---|
+| `InviaMessaggio` | boolean | | Se vero (`-1`), il messaggio viene inviato oltre che salvato. Se omesso o falso (`0`), il messaggio viene solo salvato. |
+| `InviaA` | string | se `InviaMessaggio` è vero | Destinatari del messaggio separati da `;` (es. `mario.rossi@dominio.it;anna.bianchi@dominio.it`). |
+
+> **Attenzione:** attualmente non è possibile inviare messaggi con allegati.
+
 ### 4.10 RapportoRisolutivo
 
 Rapportini di chiusura di un ticket.

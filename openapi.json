@@ -792,6 +792,53 @@
           }
         }
       },
+      "MessaggioCreate": {
+        "description": "Body di inserimento di un Messaggio. Estende `Messaggio` con i campi per l'invio contestuale al salvataggio. Attualmente non è possibile inviare messaggi con allegati.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Messaggio"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "InviaMessaggio": {
+                "type": "integer",
+                "description": "Booleano: -1 vero, 0 falso. Se vero, il messaggio viene inviato oltre che salvato. Attualmente non è possibile inviare messaggi con allegati.",
+                "examples": [
+                  -1
+                ]
+              },
+              "InviaA": {
+                "type": "string",
+                "description": "Destinatari del messaggio separati da `;`. Obbligatorio se `InviaMessaggio` è vero.",
+                "examples": [
+                  "mario.rossi@dominio.it;anna.bianchi@dominio.it"
+                ]
+              }
+            },
+            "if": {
+              "properties": {
+                "InviaMessaggio": {
+                  "const": -1
+                }
+              },
+              "required": [
+                "InviaMessaggio"
+              ]
+            },
+            "then": {
+              "required": [
+                "InviaA"
+              ],
+              "properties": {
+                "InviaA": {
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        ]
+      },
       "MessaggiSearchResponse": {
         "type": "object",
         "properties": {
@@ -8694,12 +8741,13 @@
           "CleverBase"
         ],
         "summary": "Crea un Messaggio",
+        "description": "Salva il messaggio e, se `InviaMessaggio` è vero, lo invia ai destinatari indicati in `InviaA` (separati da `;`).\n\n**Attualmente non è possibile inviare messaggi con allegati.**",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Messaggio"
+                "$ref": "#/components/schemas/MessaggioCreate"
               }
             }
           }
